@@ -1,0 +1,56 @@
+      <section>
+        <section data-background-color="black" id="tracing">
+          <h1>Workflow {Visualisation, Tracing}</h1>
+        </section>
+
+        <section>
+          <h2 class="fragment current-visible" data-fragment-index="0">Nextflow supports several visualisation methods...</h2>
+          <img class="fragment current-visible" data-fragment-index="1" src="icons/visualisatiion.png" class="icon" alt="icon">
+          <img class="fragment current-visible" data-fragment-index="2" src="icons/visualisatiion.png" class="icon" alt="icon">
+        </section>
+
+        <section data-transition="fade">
+          <h2>Execution log</h2>
+          <pre><code data-trim bash><script type="text/template"> $ nextflow log </script></code></pre>
+          <br>
+          <div id="log"></div>
+          <script>
+            AsciinemaPlayer.create("casts/nf-tutorial/log.cast", document.getElementById("log"), {
+              preload: true,
+              autoPlay: false,
+              loop: false,
+              cols: 120,
+              rows: 14,
+              speed: 2.5,
+              markers: [ 
+                [10, "part_1"], 
+                [12, "part_2"],
+                [14, "part_2"],
+              ],
+              pauseOnMarkers: true
+            });
+          </script>
+        </section>
+
+        <section data-transition="fade">
+          <h2>Execution report</h2>
+          <div>
+            <pre><code data-trim bash><script type="text/template"> $ nextflow run cleandups.nf -with-report report.html </script></code></pre>
+          </div>
+          <br>
+          <iframe data-src="htmls/report.html" width="90%" height="500px" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" allowfullscreen=""></iframe>
+        </section>
+        
+        <section data-transition="fade">
+          <h2> Execution timeline</h2>
+          <pre><code data-trim bash><script type="text/template"> $ nextflow run cleandups.nf -with-timeline timeline.html </script></code></pre>
+          <br>
+          <iframe data-src="htmls/timeline.html" width="90%" height="500px" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" allowfullscreen=""></iframe>
+        </section>
+        
+        <section data-transition="fade">
+          <h2>Workflow diagram</h2>
+          <pre><code data-trim bash><script type="text/template"> $ nextflow run cleandups.nf -with-dag flowchart.png </script></code></pre>
+          <br>
+          <img src="images/flowchart.svg" class="img" alt="flowchart" height="500px">
+        </section>
