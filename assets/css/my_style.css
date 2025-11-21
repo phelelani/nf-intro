@@ -1,0 +1,83 @@
+li {
+    margin: 10px 0;
+}
+h1, h2, h3 {
+    text-transform: none !important;
+    font-family: "Fira Sans", sans-serif;
+}
+.icon {
+/* font-size: 5em; */
+/* width: 150px; */
+/* color: #007acc; */
+margin-right: 10px;
+}
+.icon-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.icon-stack img, .icon-stack svg {
+    height: 150px;
+    /* height: auto; */
+    margin-bottom: 0px;
+}
+.icon-stack p, .icon-stack h2, .icon-stack h3 {
+    margin: 0;
+    text-align: center;
+}
+pre {
+    /* width: 100% !important; */
+    /* height: 200% !important; */
+    margin: auto !important;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.reveal pre code {
+    font-size: 0.85em;
+    max-height: 700px;
+}
+.five-cols {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+.five-cols > div {
+    flex: 1;
+    text-align: center;
+    padding: 0 1em;
+}    
+.four-cols {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    margin-top: 1em;
+}
+.four-cols > div {
+    flex: 1;
+    text-align: center;
+    padding: 0 1em;
+}
+.three-cols {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    margin-top: 1em;
+}
+.three-cols > div {
+    flex: 1;
+    text-align: center;
+    padding: 0 1em;
+}
+.two-cols {
+    display: flex;
+    justify-content: space-between;
+    gap: 0em;
+    /* margin-top: 0.8em; */
+    padding: 0px;
+}
+.two-cols > div {
+    flex: 50%;
+    text-align: center;
+}

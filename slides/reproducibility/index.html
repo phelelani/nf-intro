@@ -1,0 +1,1257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Reproducible Science</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" type="text/css" href="../../assets/plugins/asciinema/dist/bundle/asciinema-player.css">
+  <link rel="stylesheet" href="../../assets/css/my_style.css">
+
+  <script src="../../assets/plugins/asciinema/dist/bundle/asciinema-player.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.min.js"></script>
+
+</head>
+
+<!--  -->
+<body>
+  <!--  -->
+  <div class="reveal">
+    <!--  -->
+    <div class="slides">
+      <section data-background-color="black">
+        <h1 class="r-fit-text" style="margin-bottom:-25px"><b>Reproducible Science</b></h1>
+        <h3 class="r-fit-text" style="margin-bottom:75px;">Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</h3>
+        <p style="margin-bottom:-25px;">by Phelelani Mpangase</p>
+        <p style="margin-bottom:75px; font-size:0.75em"><a href="mailto:someone@example.com">phelelani.mpangase@wits.ac.za</a></p>
+        <p style="font-size:0.75em; margin-bottom:1.5em">Sydney Brenner Institute for Molecular Bioscience  |  Biomedical Informatics and Translational Science
+          <br>Faculty of Health Sciences
+          <br>University of the Witwatersrand</p>
+      </section>
+
+      <!-- <section data-background-color="black">
+        <h1>We are going to cover...</h1>
+        <ul style="list-style-type:none;text-align:center">
+          <li class="fragment fade-up"><h2><a href="#/bioinf_big_data">Bioinformatics & Big Data</a></h2></li>
+          <li class="fragment fade-up"><h2><a href="#/nextflow">Introduction to Nextflow</a></h2></li>
+          <li class="fragment fade-up"><h2><a href="#/nextflow_script">Nextflow {Script, Syntax} </a></h2></li>
+          <li class="fragment fade-up"><h2><a href="#/partial_exec">Workflow {Caching,Resuming}</a></h2></li>
+          <li class="fragment fade-up"><h2><a href="#/tracing">Workflow {Visualisation, Tracing}</a></h2></li>
+          <li class="fragment fade-up"><h2><a href="#/containers">{Docker, Singularity} Containers</a></h2></li>
+          <li class="fragment fade-up"><h2><a href="#/config">Workflow Configuration</a></h2></li>
+        </ul>
+      </section> -->
+
+      <!-- ERA OF BIG DATA -->
+      <section>
+        <section data-background-color="black" id="big_data">
+          <h1>The Era of Big Data</h1>
+        </section>
+        
+        <section>
+            <img class="r-stretch" src="../../assets/images/big_data.jpg" class="img" alt="Big Data">
+        </section>
+
+        <section>
+          <h2>Key Aspects of Big Data...</h2>
+          <div class="five-cols" style="height: 200px;">
+            <div class="icon-stack fragment" data-id="velocity" data-fragment-index="1">
+              <img src="../../assets/icons/velocity.gif"> Velocity
+            </div>
+            <div class="icon-stack fragment" data-id="volume" data-fragment-index="2">
+              <img src="../../assets/icons/volume.gif"> Volume
+            </div>
+            <div class="icon-stack fragment" data-id="value" data-fragment-index="3">
+              <img src="../../assets/icons/value.gif"> Value
+            </div>
+            <div class="icon-stack fragment" data-id="variety" data-fragment-index="4">
+              <img src="../../assets/icons/variety.gif"> Variety
+            </div>
+            <div class="icon-stack fragment" data-id="veracity" data-fragment-index="5">
+              <img src="../../assets/icons/veracity.gif"> Veracity
+            </div>
+          </div>
+
+          <br>
+
+          <div>
+            <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Generation/storage exceeds capacity of traditional data processing systems</p>
+            <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Various forms require various (new) approaches for handling and analysing</p>
+            <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Growing need for advanced analytic techniques to extract meaningful insights</p>
+            <br>
+            <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Difficult to share analysis methods and reproduce results across different platforms.</p>
+            <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Analyses often require multiple tools with complex installation steps .</p>
+            <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Software dependencies and platform variations create major hurdles.</p>
+            <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Simple automation with scripts is not enough for complex, multi-dataset analyses.</p>
+            <!-- <p class="fragment fade-up" style="margin-bottom: -0.4em;"><b>Challenges:</b><br>Management | Privacy | Security</p> -->
+            <!-- <p class="fragment fade-up" style="margin-bottom: -0.4em;"><b>Opportunities:</b><br>Innovation | Decision-making | Competitive advantage</p>                -->
+          </div>
+        </section>
+      </section>
+
+        <section>
+          <h2>Many scientific applications require:</h2>
+          <div class="three-cols">  
+            <div class="fragment fade-up">
+              <p>
+                Multiple inputs <br> <img src="../../assets/icons/files.png" class="icon" alt="icon">
+              </p>
+            </div>
+
+            <div class="fragment fade-up">
+              <p>
+                Multiple applications <br> <img src="../../assets/icons/applications.png" class="icon" alt="icon">
+              </p>
+            </div>
+
+            <div class="fragment fade-up">
+              <p>
+                Multiple parameters <br> <img src="../../assets/icons/parameters.png" class="icon" alt="icon">
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>However... general purpose languages aren't suited:</h2>
+          <div class="three-cols">
+            <div class="fragment fade-up">
+              <p>
+                Have a low a level of abstraction <br> <img src="../../assets/icons/complexity.png" class="icon" alt="icon">
+              </p>
+            </div>
+            
+            <div class="fragment fade-up">
+              <p>
+                Can't separate workflow/application <br> <img src="../../assets/icons/decision.png" class="icon" alt="icon">
+              </p>
+            </div>
+            
+            <div class="fragment fade-up">
+              <p>
+                Can't reproducible results <br> <img src="../../assets/icons/reproduce.png" class="icon" alt="icon">
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Introduction to Nextflow -->
+      <section>
+        <section data-background-color="black" id="nextflow">
+          <h1>... along came Nextflow</h1>
+        </section>
+
+        <section>
+          <img src="../../assets/icons/nextflow.png" class="img" alt="icon" height="100">
+          <p style="margin-top:-20px;"><a href="https://www.nextflow.io/">https://www.nextflow.io/</a></p>
+          <h2>Groovy-based language for expressing workflows</h2>
+          <div class="three-cols">
+            <div class="fragment fade-up">
+              <p>
+                Very easy to install <br> <img src="../../assets/icons/java.png" class="icon" alt="icon">
+              </p>
+            </div>
+            <div class="fragment fade-up">
+              <p>
+                Portable | Scalable Reproducible <br> <img src="../../assets/icons/github.png" class="icon" alt="icon">
+              </p>
+            </div>
+            <div class="fragment fade-up">
+              <p>
+                Container support <br> <img src="../../assets/icons/docker.png" class="icon" alt="icon"> <img src="../../assets/icons/singularity.png" class="icon" alt="icon" width="120">
+              </p>
+            </div>
+          </div class="fragment fade-up">
+          <div class="fragment fade-up">
+            <p>
+              Supports a range of scheduling systems
+              <br>
+              <small>
+              Sun Grid Engine (SGE) | PBS/Torque | Platform Load Sharing Facility (LSF) 
+              <br>
+              Simple Linux Utility for Resource Management (SLURM) | HTCondor | Amazon Web Services (AWS)
+              </small>
+            </p>
+          </div>
+        </section>
+
+        <!--  -->
+        <section>
+          <h2>Key concepts of Nextflow</h2>
+          <div class="two-cols">
+            <div class="fragment fade-up">
+              <p>
+                Channels <br> <img src="../../assets/icons/channel.png" class="icon" alt="icon">
+                <br>
+                <ul>
+                  <li>Handles inputs and outputs</li>
+                  <li>Communication between processes</li>
+                  <li>Process executed when all inputs ready</li>
+                </ul>
+              </p>
+            </div>
+            <div class="fragment fade-up">
+              <p>
+                Processes <br> <img src="../../assets/icons/process.png" class="icon" alt="icon">
+                <br>
+                <ul>
+                  <li>Call program that does the analysis</li>
+                  <li>Actual work being done (simple)</li>
+                  <li>Each process runs in own directory</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 style="margin-bottom: -0.25em;">H3ABioNet GWAS QC Workflow</h2>
+          <img src="../../assets/images/gwas_qc_workflow.png" class="img" alt="flowchart" height="900px">
+        </section>
+      </section>
+
+      <!--  -->
+      <section>
+        <section data-background-color="black" id="nextflow_script">
+          <h1>Nextflow {Script,Syntax}</h1>
+        </section>
+
+        <section data-auto-animate data-auto-height>
+          <h2>What goes into a Nextflow script?</h2>
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers="1-2|4|7|10" class="language-groovy">
+              #!/usr/bin/env nextflow
+              nextflow.enable.dsl=2
+
+              // PARAMETERS GO HERE!
+
+
+              // PROCESSES GO HERE!
+
+
+              // WORKFLOWS GO HERE!
+
+
+              //              
+            </code>
+          </pre>
+        </section>
+
+        <section  data-auto-animate>
+          <h2>What goes into a Nextflow script?</h2>
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers="4-5" class="language-groovy">
+              <script type="text/template">
+              #!/usr/bin/env nextflow
+              nextflow.enable.dsl=2
+
+              // PARAMETERS GO HERE!
+              input_channel = params.Channel.fromPath("some/file/somewhere.txt")
+
+              // PROCESSES GO HERE!
+ 
+
+              // WORKFLOWS GO HERE!
+
+
+              //
+              </script>
+            </code>
+          </pre>
+        </section>
+
+        <section  data-auto-animate>
+          <h2>What goes into a Nextflow script?</h2>
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers="7-22" class="language-groovy">
+              <script type="text/template">
+              #!/usr/bin/env nextflow
+              nextflow.enable.dsl=2
+
+              // PARAMETERS GO HERE!
+              input_channel = params.Channel.fromPath("some/file/somewhere.txt")
+
+              // PROCESSES GO HERE!
+              process <process_name> {
+                <process directives>
+
+                input:
+                  <input qualifier> <input name>
+
+                output:
+                  <output qualifier> <output name> <, [option]: [option value]>
+
+                script:
+                """"
+                ## Commands go here!
+                echo "Hello World! 
+                """"
+              }
+
+              // WORKFLOWS GO HERE!
+
+
+              //
+              </script>
+            </code>
+          </pre>
+        </section>
+
+        <section  data-auto-animate>
+          <h2>What goes into a Nextflow script?</h2>
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers="24-38" class="language-groovy">
+              <script type="text/template">
+              #!/usr/bin/env nextflow
+              nextflow.enable.dsl=2
+
+              // PARAMETERS GO HERE!
+              input_channel = params.Channel.fromPath("some/file/somewhere.txt")
+
+              // PROCESSES GO HERE!
+              process <process_name> {
+                <process directives>
+
+                input:
+                  <input qualifier> <input name>
+
+                output:
+                  <output qualifier> <output name> <, [option]: [option value]>
+
+                script:
+                """"
+                ## Commands go here!
+                echo "Hello World! 
+                """"
+              }
+
+              // WORKFLOWS GO HERE!
+              workflow my_workflow {
+                take:
+                  <workflow inputs>
+
+                main:
+                  <processes to run>
+                
+                emit:
+                  <workflow outputs>
+              }
+
+              workflow {
+                my_workflow()
+              }
+
+              //
+              </script>
+            </code>
+          </pre>
+        </section>
+        <!-- <div class="r-stack">
+          <div class="fragment current-visible" data-fragment-index="1">
+          Test
+          </div>
+
+          <div class="fragment current-visible" data-fragment-index="2">
+            Test
+          </div>
+        </div> -->
+      </section>
+
+      <section>
+        <section data-background-color="black">
+          <h1>Lets practice some Nextflow...</h1>
+        </section>
+
+        <section>
+          <h2>I want to remove duplicated lines from a <code>.bim</code> file...</h2>
+          <pre>
+            <code data-trim bash data-line-numbers="|6-7,18-19">
+              <script type="text/template">
+                11	11:189256	0	189256	A	G
+                11	11:193788	0	193788	T	C
+                11	11:194062	0	194062	T	C
+                11	11:194228	0	194228	A	G
+                11	11:201482	0	201482	T	C
+                11	11:209089	0	209089	T	C
+                11	11:209089	0	209089	T	G
+                11	11:211584	0	211584	T	C
+                11	11:213272	0	213272	A	G
+                11	11:214832	0	214832	C	T
+                11	11:223067	0	223067	T	C
+                11	11:226871	0	226871	T	C
+                11	11:227087	0	227087	A	G
+                11	11:233268	0	233268	G	T
+                11	11:234106	0	234106	A	G
+                11	11:234141	0	234141	G	A
+                11	11:238181	0	238181	C	A
+                11	11:239131	0	239131	A	G
+                11	11:239131	0	239131	A	T
+                11	11:242318	0	242318	T	C
+                11	11:245014	0	245014	0	0
+                11	11:247030	0	247030	A	G
+                11	11:254391	0	254391	T	C
+                11	11:266012	0	266012	G	A
+                11	11:268039	0	268039	T	C
+                11	11:273928	0	273928	T	G
+                11	11:280233	0	280233	G	A
+                11	11:285343	0	285343	G	A
+                11	11:290364	0	290364	T	C
+              </script>
+            </code>
+          </pre>
+          <p class="fragment fade-up">
+            Here's how I can do this using <code>BASH</code>...
+          </p>
+          </section>
+
+          <section>
+            <div id="manual"></div>
+              <script>
+                AsciinemaPlayer.create('../../assets/casts/manual_command.cast', document.getElementById('manual'), {
+                  preload: true,
+                  autoPlay: false,
+                  loop: false,
+                  cols: 120,
+                  rows: 24,
+                  speed: 2.5,
+                });
+              </script>
+        </section>
+
+        <section>
+          <h2>Simple and straight forward, right?<br>But, what if...</h2>
+          <div class="three-cols">
+            <div>
+              <p class="fragment fade-up">
+                I have 2-Mil files <br> (scalability) <br> <img src="../../assets/icons/scale_up.png" class="icon" alt="icon">
+              </p>
+            </div>
+            <div>
+              <p class="fragment fade-up">
+                Must get same results <br>(reproducibility) <br> <img src="../../assets/icons/repeat.png" class="icon" alt="icon">
+              </p>
+            </div>
+            <div>
+              <p class="fragment fade-up">
+                My friend on Mars <br>(portable) <br> <img src="../../assets/icons/portable.png" height=150px class="icon" alt="icon">
+              </p>
+            </div>
+        </section>
+
+        <section>
+          <h2>Using Nextflow to solve this problem...</h2>
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers="1-2|4|6-17|19-30|32-43|45-49" class="language-groovy">
+              <script type="text/template">
+              #!/usr/bin/env nextflow                                                                                                                                                                                     
+              nextflow.enable.dsl=2
+
+              input_data = Channel.fromPath("data/11.bim")
+
+              process getIDs {
+                  input:
+                  path(input_data)
+
+                  output:
+                  path("ids"), emit: ids_channel
+                  path("11.bim"), emit: original_channel
+
+                  """                                                                                                                                                                                                     
+                  cut -f 2 ${input_data} | sort > ids                                                                                                                                                                     
+                  """
+              }
+
+              process getDuplicates {
+                  input:
+                  path(ids_channel)
+
+                  output:
+                  path("dups"), emit: duplicates_channel
+
+                  """                                                                                                                                                                                                     
+                  uniq -d ${ids_channel} > dups                                                                                                                                                                           
+                  touch ignore                                                                                                                                                                                            
+                  """
+              }
+
+              process removeDuplicates {
+                  input:
+                  path(duplicates_channel)
+                  path(original_channel)
+
+                  output:
+                  path("clean.bim"), emit: cleaned_channel
+
+                  """                                                                                                                                                                                                     
+                  grep -v -f ${duplicates_channel} ${original_channel} > clean.bim                                                                                                                                        
+                  """
+              }
+
+              workflow {
+                  getIDs(input_data)
+                  getDuplicates(getIDs.out.ids_channel)
+                  removeDuplicates(getDuplicates.out.duplicates_channel, getIDs.out.original_channel).subscribe { print "Done!" }
+              }        
+              </script>
+            </code>
+          </pre>
+          <p class="fragment fade-up">Now we can execute our Nextflow script...</p>
+        </section>
+
+        <section>
+          <div id="player"></div>
+            <script>
+              AsciinemaPlayer.create('../../assets/casts/nf-tutorial/nf_run.cast', document.getElementById('player'), {
+                preload: true,
+                autoPlay: false,
+                loop: false,
+                cols: 120,
+                rows: 24,
+                speed: 2.5,
+                markers: [ 
+                  [0.0, "nextflow run"], 
+                  [16.0, "work directory"] ],
+                pauseOnMarkers: true
+                });
+            </script>
+        </section> 
+      </section>
+
+      <!--  -->
+      <section>
+        <section data-background-color="black" id="partial_exec">
+          <h1>Workflow {Caching,Resuming}</h1>
+        </section>
+        
+        <section>
+          <h2>If workflow execution is partial...</h2>
+          <div class="two-cols">
+            <div>
+              <p class="fragment fade-up">
+                Because of errors & goblins <br> <img src="../../assets/icons/error.png" class="icon" alt="icon">
+              </p>
+            </div>
+            <div>
+              <p class="fragment fade-up">
+                Resume from process that failed <br> <img src="../../assets/icons/resume.png" class="icon" alt="icon">
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div id="resume"></div>
+          <script>
+            AsciinemaPlayer.create("../../assets/casts/nf-tutorial/nf_resume.cast", document.getElementById("resume"), {
+              preload: true,
+              autoPlay: false,
+              loop: false,
+              cols: 120,
+              rows: 24,
+              speed: 2.5,
+            });
+          </script>
+        </section>
+      </section>
+
+      <!--  -->
+      <section>
+        <section data-background-color="black" id="tracing">
+          <h1>Workflow {Visualisation, Tracing}</h1>
+        </section>
+
+        <section>
+          <h2>Nextflow supports several visualisation methods...</h2>
+          <div class="r-stack">
+            <div class="fragment current-visible" data-fragment-index="0" style="width:1000px">
+              Execution log
+              <pre><code data-trim bash><script type="text/template"> $ nextflow log </script></code></pre>
+            </div>
+            <div class="fragment current-visible" data-fragment-index="1" style="width:1000px">
+              Execution report
+              <pre><code data-trim bash><script type="text/template"> $ nextflow run cleandups.nf -with-report report.html </script></code></pre>
+            </div>
+            <div class="fragment current-visible" data-fragment-index="2" style="width:1000px">
+              Execution timeline
+              <pre><code data-trim bash><script type="text/template"> $ nextflow run cleandups.nf -with-timeline timeline.html </script></code></pre>
+            </div>
+            <div class="fragment current-visible" data-fragment-index="3" style="width:1000px">
+              Workflow diagram
+              <pre><code data-trim bash><script type="text/template"> $ nextflow run cleandups.nf -with-dag flowchart.png </script></code></pre>
+            </div>
+          </div>
+          <div class="r-stack" style="width:100%; height:700px;">
+            <div class="fragment current-visible" data-fragment-index="0" id="log" style="width:100%"></div>
+            <script>
+              AsciinemaPlayer.create("../../assets/casts/nf-tutorial/log.cast", document.getElementById("log"), {
+                preload: true,
+                autoPlay: false,
+                loop: false,
+                cols: 120,
+                rows: 18,
+                speed: 2.5,
+                markers: [ 
+                  [12, "part_1"], 
+                  [15, "part_3"]
+                ],
+                pauseOnMarkers: true
+              });
+            </script>
+            <iframe class="fragment current-visible" data-fragment-index="1" data-src="../../assets/htmls/report.html" width="100%" height="700px" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" allowfullscreen=""></iframe>
+            <iframe class="fragment current-visible" data-fragment-index="2" data-src="../../assets/htmls/timeline.html" width="100%" height="700px" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" allowfullscreen=""></iframe>
+            <img class="fragment current-visible" data-fragment-index="3" src="../../assets/images/flowchart.svg" class="img" alt="flowchart" height="700px">
+          </div>
+        </section>
+      </section>
+
+      <section>
+        <section data-background-color="black">
+          <h1>Generalise our Nextflow script...</h1>
+        </section>
+       
+        <section>
+          <div id="11.bim"></div>
+          <script>
+            AsciinemaPlayer.create('../../assets/casts/nf-tutorial/12.cast', document.getElementById('11.bim'), {
+              preload: true,
+              autoPlay: false,
+              loop: false,
+              cols: 120,
+              rows: 24,
+              speed: 2,
+               markers: [ 
+                  [9, "part_1"], 
+                ],
+                pauseOnMarkers: true
+              });
+          </script>
+        </section>
+
+        <section data-auto-animate>
+          <h2>Lets fix the issue...</h2>
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers class="language-groovy">
+              <script type="text/template">
+              #!/usr/bin/env nextflow                                                                                                                                                                                     
+              nextflow.enable.dsl=2
+
+              input_data = Channel.fromPath("data/11.bim")
+
+              process getIDs {
+                  input:
+                  path(input_data)
+
+                  output:
+                  path("ids"), emit: ids_channel
+                  path("11.bim"), emit: original_channel
+
+                  """                                                                                                                                                                                                     
+                  cut -f 2 ${input_data} | sort > ids                                                                                                                                                                     
+                  """
+              }
+
+              process getDuplicates {
+                  input:
+                  path(ids_channel)
+
+                  output:
+                  path("dups"), emit: duplicates_channel
+
+                  """                                                                                                                                                                                                     
+                  uniq -d ${ids_channel} > dups                                                                                                                                                                           
+                  touch ignore                                                                                                                                                                                            
+                  """
+              }
+
+              process removeDuplicates {
+                  input:
+                  path(duplicates_channel)
+                  path(original_channel)
+
+                  output:
+                  path("clean.bim"), emit: cleaned_channel
+
+                  """                                                                                                                                                                                                     
+                  grep -v -f ${duplicates_channel} ${original_channel} > clean.bim                                                                                                                                        
+                  """
+              }
+
+              workflow {
+                  getIDs(input_data)
+                  getDuplicates(getIDs.out.ids_channel)
+                  removeDuplicates(getDuplicates.out.duplicates_channel, getIDs.out.original_channel).subscribe { print "Done!" }
+              }
+              </script>
+            </code>
+          </pre>
+        </section>
+
+        <section data-auto-animate>
+          <h2>Lets fix the issue...</h2>
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers="4-5|7-18" class="language-groovy">
+              <script type="text/template">
+              #!/usr/bin/env nextflow                                                                                                                                                                                     
+              nextflow.enable.dsl=2
+
+              params.data = "data"
+              input_data = Channel.fromPath("${params.data}/*.bim")
+
+              process getIDs {
+                  input:
+                  path(input_data)
+
+                  output:
+                  path("ids"), emit: ids_channel
+                  path("11.bim"), emit: original_channel
+
+                  """                                                                                                                                                                                                     
+                  cut -f 2 ${input_data} | sort > ids                                                                                                                                                                     
+                  """
+              }
+
+              process getDuplicates {
+                  input:
+                  path(ids_channel)
+
+                  output:
+                  path("dups"), emit: duplicates_channel
+
+                  """                                                                                                                                                                                                     
+                  uniq -d ${ids_channel} > dups                                                                                                                                                                           
+                  touch ignore                                                                                                                                                                                            
+                  """
+              }
+
+              process removeDuplicates {
+                  input:
+                  path(duplicates_channel)
+                  path(original_channel)
+
+                  output:
+                  path("clean.bim"), emit: cleaned_channel
+
+                  """                                                                                                                                                                                                     
+                  grep -v -f ${duplicates_channel} ${original_channel} > clean.bim                                                                                                                                        
+                  """
+              }
+
+              workflow {
+                  getIDs(input_data)
+                  getDuplicates(getIDs.out.ids_channel)
+                  removeDuplicates(getDuplicates.out.duplicates_channel, getIDs.out.original_channel).subscribe { print "Done!" }
+              }
+              </script>
+            </code>
+          </pre>
+        </section>        
+
+        <section data-auto-animate>
+          <h2>Lets fix the issue...</h2>
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers="7-18|20-31" class="language-groovy">
+              <script type="text/template">
+              #!/usr/bin/env nextflow                                                                                                                                                                                     
+              nextflow.enable.dsl=2
+
+              params.data = "data"
+              input_data = Channel.fromPath("${params.data}/*.bim")
+
+              process getIDs {
+                  input:
+                  path(input_data)
+                  
+                  output:
+                  path("${input_data.baseName}.ids"), emit: ids_channel
+                  path("${input_data}"), emit: original_channel
+                  
+                  """
+                  cut -f 2 ${input_data} | sort > ${input_data.baseName}.ids
+                  """
+              }
+
+              process getDuplicates {
+                  input:
+                  path(ids_channel)
+
+                  output:
+                  path("dups"), emit: duplicates_channel
+
+                  """                                                                                                                                                                                                     
+                  uniq -d ${ids_channel} > dups                                                                                                                                                                           
+                  touch ignore                                                                                                                                                                                            
+                  """
+              }
+
+              process removeDuplicates {
+                  input:
+                  path(duplicates_channel)
+                  path(original_channel)
+
+                  output:
+                  path("clean.bim"), emit: cleaned_channel
+
+                  """                                                                                                                                                                                                     
+                  grep -v -f ${duplicates_channel} ${original_channel} > clean.bim                                                                                                                                        
+                  """
+              }
+
+              workflow {
+                  getIDs(input_data)
+                  getDuplicates(getIDs.out.ids_channel)
+                  removeDuplicates(getDuplicates.out.duplicates_channel, getIDs.out.original_channel).subscribe { print "Done!" }
+              }
+              </script>
+            </code>
+          </pre>
+        </section> 
+
+        <section data-auto-animate>
+          <h2>Lets fix the issue...</h2>
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers="20-31|33-44" class="language-groovy">
+              <script type="text/template">
+              #!/usr/bin/env nextflow                                                                                                                                                                                     
+              nextflow.enable.dsl=2
+
+              params.data = "data"
+              input_data = Channel.fromPath("${params.data}/*.bim")
+
+              process getIDs {
+                  input:
+                  path(input_data)
+                  
+                  output:
+                  path("${input_data.baseName}.ids"), emit: ids_channel
+                  path("${input_data}"), emit: original_channel
+                  
+                  """
+                  cut -f 2 ${input_data} | sort > ${input_data.baseName}.ids
+                  """
+              }
+
+              process getDuplicates {
+                  input:
+                  path(ids_channel)
+
+                  output:
+                  path("${ids_channel.baseName}.dups"), emit: duplicates_channel
+
+                  """
+                  uniq -d ${ids_channel} > "${ids_channel.baseName}.dups"
+                  touch ignore
+                  """
+              }
+
+              process removeDuplicates {
+                  input:
+                  path(duplicates_channel)
+                  path(original_channel)
+
+                  output:
+                  path("clean.bim"), emit: cleaned_channel
+
+                  """                                                                                                                                                                                                     
+                  grep -v -f ${duplicates_channel} ${original_channel} > clean.bim                                                                                                                                        
+                  """
+              }
+
+              workflow {
+                  getIDs(input_data)
+                  getDuplicates(getIDs.out.ids_channel)
+                  removeDuplicates(getDuplicates.out.duplicates_channel, getIDs.out.original_channel).subscribe { print "Done!" }
+              }
+              </script>
+            </code>
+          </pre>
+        </section> 
+
+        <section data-auto-animate>
+          <h2>Lets fix the issue...</h2>
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers="33-46|48-52" class="language-groovy">
+              <script type="text/template">
+              #!/usr/bin/env nextflow                                                                                                                                                                                     
+              nextflow.enable.dsl=2
+
+              params.data = "data"
+              input_data = Channel.fromPath("${params.data}/*.bim")
+
+              process getIDs {
+                  input:
+                  path(input_data)
+                  
+                  output:
+                  path("${input_data.baseName}.ids"), emit: ids_channel
+                  path("${input_data}"), emit: original_channel
+                  
+                  """
+                  cut -f 2 ${input_data} | sort > ${input_data.baseName}.ids
+                  """
+              }
+
+              process getDuplicates {
+                  input:
+                  path(ids_channel)
+
+                  output:
+                  path("${ids_channel.baseName}.dups"), emit: duplicates_channel
+
+                  """
+                  uniq -d ${ids_channel} > "${ids_channel.baseName}.dups"
+                  touch ignore
+                  """
+              }
+
+              process removeDuplicates {
+                  publishDir "output", pattern: "${duplicates_channel.baseName}.bim", overwrite:true, mode:'copy'
+                  
+                  input:
+                  path(duplicates_channel)
+                  path(original_channel)
+
+                  output:
+                  path("${duplicates_channel.baseName}_clean.bim"), emit: cleaned_channel
+
+                  """
+                  grep -v -f ${duplicates_channel} ${original_channel} > ${duplicates_channel.baseName}_clean.bim
+                  """
+              }
+
+              workflow {
+                  getIDs(input_data)
+                  getDuplicates(getIDs.out.ids_channel)
+                  removeDuplicates(getDuplicates.out.duplicates_channel, getIDs.out.original_channel).subscribe { print "Done!" }
+              }
+              </script>
+            </code>
+          </pre>
+        </section> 
+
+        <section data-auto-animate>
+          <h2>Lets fix the issue...</h2>
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers="48-52" class="language-groovy">
+              <script type="text/template">
+              #!/usr/bin/env nextflow                                                                                                                                                                                     
+              nextflow.enable.dsl=2
+
+              params.data = "data"
+              input_data = Channel.fromPath("${params.data}/*.bim")
+
+              process getIDs {
+                  input:
+                  path(input_data)
+                  
+                  output:
+                  path("${input_data.baseName}.ids"), emit: ids_channel
+                  path("${input_data}"), emit: original_channel
+                  
+                  """
+                  cut -f 2 ${input_data} | sort > ${input_data.baseName}.ids
+                  """
+              }
+
+              process getDuplicates {
+                  input:
+                  path(ids_channel)
+
+                  output:
+                  path("${ids_channel.baseName}.dups"), emit: duplicates_channel
+
+                  """
+                  uniq -d ${ids_channel} > "${ids_channel.baseName}.dups"
+                  touch ignore
+                  """
+              }
+
+              process removeDuplicates {
+                  publishDir "output", pattern: "${duplicates_channel.baseName}.bim", overwrite:true, mode:'copy'
+                  
+                  input:
+                  path(duplicates_channel)
+                  path(original_channel)
+
+                  output:
+                  path("${duplicates_channel.baseName}_clean.bim"), emit: cleaned_channel
+
+                  """
+                  grep -v -f ${duplicates_channel} ${original_channel} > ${duplicates_channel.baseName}_clean.bim
+                  """
+              }
+
+              workflow {
+                  getIDs(input_data)
+                  getDuplicates(getIDs.out.ids_channel)
+                  removeDuplicates(getDuplicates.out.duplicates_channel, getIDs.out.original_channel).subscribe { print "Done!" }
+              }
+              
+              </script>
+            </code>
+          </pre>
+        </section> 
+
+        <section>
+          <div id="general"></div>
+          <script>
+            AsciinemaPlayer.create('../../assets/casts/nf-tutorial/general.cast', document.getElementById('general'), {
+              preload: true,
+              autoPlay: false,
+              loop: false,
+              cols: 120,
+              rows: 24,
+              speed: 2.5,
+              });
+          </script>
+        </section>
+      </section>
+
+      <!--  -->
+      <section>
+        <section data-background-color="black" id="containers">
+          <h1>{Docker, Singularity} Containers</h1>
+        </section>
+
+        <section>
+          <h2>Nextflow supports Docker & Singularity/Apptainer...</h2>
+          <div class="two-cols">
+            <div>
+              <p class="fragment fade-up">
+                Light-weight Unix virtualisation <br> abstraction layer <br> <img src="../../assets/icons/virtual.png" class="icon" alt="icon">
+              </p>
+            </div>
+            <div>
+              <p class="fragment fade-up">
+                Create containers locally <br> OR get from repositories <br> <img src="../../assets/icons/cloud.png" class="icon" alt="icon">
+              </p>
+            </div>
+          </div>
+          <!-- <br> -->
+          <div class="two-cols">
+            <div>
+              <p class="fragment fade-up">
+                Each process runs as a separate <br> container call <br> <img src="../../assets/icons/separate.png" class="icon" alt="icon">
+              </p>
+            </div>
+            <div>
+              <p class="fragment fade-up">
+                Can use the same or different <br> container for processes <br> <img src="../../assets/icons/decision.png" class="icon" alt="icon">
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>PLINK example...</h2>
+          <!-- ...I want to run it, but I don't have it installed! -->
+          <pre data-id="code-animation">
+            <code data-trim java data-line-numbers="" class="language-groovy">
+              <script type="text/template">          
+                #!/usr/bin/env nextflow
+                nextflow.enable.dsl=2
+
+                params.dir = "data/pops/"
+                dir = params.dir
+                params.pops = ["YRI","CEU","BEB"]
+
+                Channel
+                    .fromFilePairs("${params.dir}/{YRI,BEB,CEU}.{bed,bim,fam}",size:3) {
+                        file -> file.baseName 
+                    }
+                    .filter { key, files -> key in params.pops }
+                    .set { plink_data }
+
+                process checkData {
+                    input:
+                    tuple val(pop), path(pl_files)
+                    
+                    output:
+                    path("${pop}.frq"), emit: result
+                    
+                    """
+                    plink --bfile $pop --freq  --out $pop
+                    """
+                }
+
+                workflow {
+                    checkData(plink_data).view()
+                }
+              </script>
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <div id="containers_script"></div>
+          <script>
+            AsciinemaPlayer.create("../../assets/casts/nf-tutorial/plink_docker.cast", document.getElementById("containers_script"), {
+              preload: true,
+              autoPlay: false,
+              loop: false,
+              speed: 2.5,
+              cols: 120,
+              rows: 24,
+              markers: [ 
+                [12, "fail"], 
+                [24, "check"]
+              ],
+              pauseOnMarkers: true
+            });
+          </script>
+        </section>
+      </section>
+    
+      <!-- <section>
+        <section data-background-color="black" id="execs">
+          <h1>Executors</h1> 
+        </section>
+        
+      </section> -->
+
+      <!--  -->
+      <section>
+        <section data-background-color="black" id="config">
+          <h1>Workflow Configuration</h1>
+        </section>
+
+        <section>
+          <h3>The <code>nextflow.config</code> file</h3>
+          <pre>
+            <code data-trim java data-line-numbers="|4-11|13-20|22-26|28-39|41-62|65-81|83-100" class="language-groovy">
+              <script type="text/template">
+              !/usr/bin/env nextflow
+              nextflow.enable.dsl=2
+
+              manifest {
+                  author = 'Phelelani Mpangase'
+                  defaultBranch = 'main'
+                  homePage = 'https://github.com/phelelani/nf-deepvar'
+                  description = ''
+                  mainScript = 'main.nf'
+                  version = ''
+              }
+
+              params.runOptions = "-B /dataB/aux -B /opt/exp_soft/bioinf -B /dataC/IDCM -B /dataG/SGDVP -B /spaces/phelelani -B /dataH/ovarian_cancer"
+
+              singularity {
+                  enabled = true
+                  autoMounts = true
+                  cacheDir = "$HOME/.singularity/cache/"
+                  runOptions = "--cleanenv " + "${params.runOptions}"
+              }
+
+              executor{
+                  jobName = { "${task.name.replaceAll(' ','_')}" }    
+                  queueSize = 100
+                  submitRateLimit = '10 min' 
+              }
+
+              process {
+                  // GENERAL
+                  cache = true
+                  scratch = false
+                  stageInMode = 'symlink'
+                  stageOutMode = 'rsync'
+                  cpus = 12
+                  memory = 4.GB
+                  time = 48.h
+                  maxForks = 20
+                  errorStrategy = 'finish'
+                  clusterOptions = ['--constraint=avx2', '--exclude=n26', '--exclude=n04']
+
+                  // CONTAINERS
+                  withLabel: bwa_samtools {
+                      container = 'docker://quay.io/grbot/bwa-samtools'
+                  }
+                  withLabel: gatk {
+                      container = 'docker://broadinstitute/gatk:4.4.0.0'
+                  }
+                  withLabel: 'deepvariant' {
+                      cpus = 32
+                      memory = 200.GB
+                      container = 'docker://google/deepvariant:b350512297c12'
+                      clusterOptions = ['--constraint=avx2', '--exclude=n26', '--exclude=n04', '--exclusive=user']
+                  }
+                  withLabel: 'glnexus' {
+                      cpus = 32
+                      memory = 200.GB
+                      container = "docker://ghcr.io/dnanexus-rnd/glnexus:v1.4.1"
+                  }
+                  withLabel: bcftools {
+                      container = 'docker://phelelani/nf-dddafrica:bcftools'
+                  }
+              }
+
+              // PROFILES
+              profiles {
+                  standard {
+                      process.executor = 'local'
+                  }
+                  ilifu {
+                      process.executor = 'slurm'
+                      process.queue = 'Main'
+                  }
+                  wits {
+                      process.executor = 'slurm'
+                      process.queue = 'batch'
+                  }
+                  cbio {
+                      process.executor = 'pbs'
+                      process.queue = 'dev'
+                  }
+              }
+
+              // WORKFLOW VISUALISATION
+              trace {
+                  enabled = true
+                  overwrite = true
+                  file = "${launchDir}/exec-report/${params.project_name}_${params.workflow}_trace.txt"
+              }
+              timeline {
+                  enabled = true
+                  overwrite = true
+                  file = "${launchDir}/exec-report/${params.project_name}_${params.workflow}_timeline.html"
+              }
+              report {
+                  enabled = true
+                  overwrite = true
+                  file = "${launchDir}/exec-report/${params.project_name}_${params.workflow}_report.html"
+              }
+
+              //
+              </script>
+            </code>
+          </pre>
+        </section>
+      </section>
+
+      <section>
+      <!-- <h2>How it all fits...</h2> -->
+        <img src="../../assets/images/best_practices.png" class="img" alt="flowchart" height="900px">
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/zoom/zoom.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1600,
+      height: 900,
+      margin: 0.05,
+      // minScale: 0.2,
+      // maxScale: 5.0,
+      backgroundTransition: 'fade',
+      hash: true,
+      plugins: [ RevealZoom, RevealMarkdown, RevealHighlight ],
+    });
+  </script>
+</body>
+</html>
