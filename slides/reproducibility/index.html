@@ -157,7 +157,6 @@
         <section data-background-color="black" id="big_data">
           <h1>Workflow Management Systems/Engines</h1>
         </section>
-
         <section>
           <h2>Workflow Management System/Engine</h2>
           <p style="margin-top: -30px;">Must support the following to promote reproducible science:</p>
@@ -182,8 +181,8 @@
             <div data-fragment-index="14" class="fragment"><img style="margin-bottom: -10px;" src="../../assets/icons/compliance.png"><br>Security/compliance features</div>
             <div data-fragment-index="15" class="fragment"><img style="margin-bottom: -10px;" src="../../assets/icons/api.png"><br>Standardization & interoperability</div>
           </div>
-          <div  style="height: 150px; margin-top: 30px; background-color:black;"></div>
-          <div class="stacked-fragments" style="height: 140px; font-size: 1em; margin-top: -145px; background-color:white; align-content: center;">
+          <div style="height: 150px; margin-top: 30px; background-color:black;"></div>
+          <div class="stacked-paragraph" style="height: 140px; font-size: 1em; margin-top: -145px; background-color:white;">
             <p class="fragment fade-in-then-out" data-fragment-index="1">Able to define individual computational tasks <br> (commands, inputs, outputs, resources)</p>
             <p class="fragment fade-in-then-out" data-fragment-index="2">Automatic construction and execution of a directed acyclic graph (DAG) based on inputs/outputs or explicit dependencies</p>
             <p class="fragment fade-in-then-out" data-fragment-index="3">Able to discover and run tasks in parallel <br> (dataflow, rule-based, etc.)</p>
@@ -297,7 +296,54 @@
 
       <section>
         <section data-background-color="black" id="big_data">
-          <h1>Scaling & Sharing</h1>
+          <h1>Scaling, Documentation & Sharing</h1>
+        </section>
+        <section>
+          <h2>Reproducible Science Depends on Workflows that:</h2>
+          <div class="three-cols" style="font-size: 0.7em;">
+            <div class="icon-stack fragment" data-fragment-index="1"><img src="../../assets/icons/scale.png" >1. Scale consistently</div>
+            <div class="icon-stack fragment" data-fragment-index="2"><img src="../../assets/icons/version_control.png" >2. Fully version-controlled</div>
+            <div class="icon-stack fragment" data-fragment-index="3"><img src="../../assets/icons/container.png" >3. Shared with code & container</div>
+          </div>
+          <div class="stacked-fragments" style="height: 400px; font-size: 0.75em; margin-top: 50px;">
+            <div class="fragment fade-in-then-out" data-fragment-index="1">
+              <h2>Workflow Scaling:</h2>
+              <p style="margin-top: -30px;"><em>Ensures consistent results across different compute environments</em></p>
+              <ul>
+                <li>Scaling lets a workflow run identically on a laptop, HPC cluster, or cloud</li>
+                <li>Containerisation (Docker/Singularity) and workflow engines:</li>
+                  <ul>
+                    <li>Ensure the same code & environment regardless of where or how big the system is</li>
+                  </ul>
+                <li>Parallel execution and scheduler portability prevent human errors may arise</li>
+                <li>Results are stable and repeatable across different hardware, scales, and institutions</li>
+              </ul>
+            </div>
+            <div class="fragment fade-in-then-out" data-fragment-index="2">
+              <h2>Version Control:</h2>
+              <p style="margin-top: -30px;"><em>Captures exact states of code, parameters, and environments</em></p>
+              <ul>
+                <li>Git records every change, enabling precise tracking:</li>
+                  <ul>
+                    <li>Scripts, configs, reference versions, and parameters</li>
+                  </ul>
+                <li>Workflow engines often track versions of modules, containers, and dependencies</li>
+                <li>You can reproduce exactly what happened by checking out a tagged version of the repository</li>
+                <li>You can re-run any past version of a workflow and obtain consistent outputs</li>
+              </ul>
+            </div>
+            <div class="fragment" data-fragment-index="3">
+              <h2>Sharing:</h2>
+              <p style="margin-top: -30px;"><em>Ensures others can run the exact same workflow</em></p>
+              <ul>
+                <li>Sharing workflows through GitHub, nf-core, Dockstore, etc.</li>
+                <li>Allows others to access your code and the environment specifications</li>
+                <li>Standard workflow languages (Nextflow, WDL, Snakemake, CWL) make pipelines portable across systems</li>
+                <li>Shared containers and config profiles ensure that collaborators run the same versions of tools</li>
+                <li>Other researchers can replicate or extend your analysis with confidence</li>
+              </ul>
+            </div>
+          </div>
         </section>
       </section>
 
@@ -319,11 +365,11 @@
       
       <!-- TAKE HOME! -->
       <section>
-        <section data-background-color="black" id="take_home">
+        <!-- <section data-background-color="black" id="take_home">
           <h1>Take Home...</h1>
-        </section>
+        </section> -->
         <section>
-          <img src="../../assets/icons/question_2.gif" style="width: 20%;">
+          <img src="../../assets/icons/confused.png" style="width: 10%;">
           <p>Any Questions?</p>
         </section>
       </section>

@@ -1,6 +1,21 @@
 li {
-    margin: 10px 0;
+    margin: 0px 0;
 }
+/* Styles for the top-level list (Level 1) */
+ul li {
+  list-style-type: disc; /* Default: a filled circle */
+}
+
+/* Styles for lists nested two levels deep (Level 3) */
+ul ul li {
+  list-style-type: circle; /* A filled square */
+}
+
+/* Optionally, for lists nested three levels deep (Level 4) */
+ul ul ul li {
+  list-style-type: lower-alpha; /* Lowercase letters (if an <ol> is nested) */
+}
+
 h1, h2, h3 {
     text-transform: none !important;
     font-family: "Fira Sans", sans-serif;
@@ -85,15 +100,29 @@ pre {
     font-size: medium;
     margin-top: 0px ;
 }
-.stacked-fragments {
+.stacked-paragraph {
     position: relative;
     height: 80px;  /* adjust to fit your text */
 }
-.stacked-fragments p {
+.stacked-paragraph p {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     margin: 0;
-    text-align: center; /* if you want centered text */
+    text-align: center;
+}
+/* STACKED FRAGMENTS */
+.stacked-fragments {
+    position: relative;
+}
+.stacked-fragments > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  /* display: flex; */
+  /* align-items: left; */
+  /* justify-content: center; */
 }
