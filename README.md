@@ -9,7 +9,11 @@
 </div>
 --- -->
 
+<div align="center">
+  <strong>My Tutorial Title</strong>
+</div>
 
+<!-- 
 <div align="center">
   <span style="font-size:2.4em; font-weight:700;">
     My Tutorial Title KJASD;CJA
@@ -20,7 +24,7 @@
   <span style="font-size:1.2em; color:gray;">
     A Step-by-Step Guide for Beginners
   </span>
-</div>
+</div> -->
 
 <!-- <div style="text-align:center; margin-bottom:0; padding-bottom:0;">
   <h1 style="margin-bottom:0; padding-bottom:0; border-bottom:none;">
