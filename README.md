@@ -304,10 +304,6 @@ nextflow run cleandups.nf -with-dag <file-name>.dot
 ```
 nextflow run cleandups.nf -with-timeline <file-name>.html
 ```
-<div align="center">
-    <iframe src="../../assets/htmls/nf_timeline.html"></iframe>
-</div>
-
 <p align="center">
   <img width="1000" src="assets/htmls/nf_timeline.html">
 </p>
@@ -316,9 +312,9 @@ nextflow run cleandups.nf -with-timeline <file-name>.html
 ```
 nextflow run cleandups.nf -with-report <file-name>.html
 ```
-<p align="center">
-  <img width="1000" src="_static/images/report.png">
-</p>
+<div align="center">
+    <iframe src="assets/images/nf_report.png"></iframe>
+</div>
 
 **NB:** For debugging, `-with-trace` option may be useful.
 
