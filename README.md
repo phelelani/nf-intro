@@ -321,7 +321,7 @@ nextflow run cleandups.nf -with-report <file-name>.html
 nextflow run cleandups.nf -with-dag  -preview <file-name>.html
 ```
 <div align="center">
-    <img width="1000"src="assets/images/nf_preview.png>
+    <img width="1000"src="assets/images/nf_preview.png">
 </div>
 
 **NB:** For debugging, `-with-trace` option may be useful.
