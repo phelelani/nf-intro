@@ -1,39 +1,5 @@
-<!-- <h1 align="center" style="margin-bottom:0px; padding-bottom:0px; border-bottom:none;">Introduction to Nextflow:</h1><p align="center" style="font-size:1.1em; color:gray;">Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</p> -->
-
-<!-- <div align="center" style="font-size:10em; font-weight:bold; margin-bottom:0;">
-  My Tutorial Title
-</div>
-
-<div align="center" style="margin-top:0; font-size:1.2em; color:gray;">
-  A Step-by-Step Guide for Beginners
-</div>
---- -->
-
-<!-- <div align="center"> -->
-  <h1 align="center" style="border-bottom: none;">My Tutorial Title</h1>
-<!-- </div> -->
-
-<!-- 
-<div align="center">
-  <span style="font-size:2.4em; font-weight:700;">
-    My Tutorial Title KJASD;CJA
-  </span>
-</div>
-
-<div align="center">
-  <span style="font-size:1.2em; color:gray;">
-    A Step-by-Step Guide for Beginners
-  </span>
-</div> -->
-
-<!-- <div style="text-align:center; margin-bottom:0; padding-bottom:0;">
-  <h1 style="margin-bottom:0; padding-bottom:0; border-bottom:none;">
-    Introduction to Nextflow
-  </h1>
-  <div style="margin-top:0; padding-top:0; font-size:1.1em; color:gray;">
-    Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows
-  </div>
-</div> -->
+<h1 align="center" style="margin-bottom:0px; padding-bottom:0px; border-bottom:none;">Introduction to Nextflow:</h1>
+<p align="center" style="font-size:1.1em; color:gray;">Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</p>
 
 ### Instructor
 - [Phelelani Mpangase](https://github.com/phelelani) |  [email](mailto:Phelelani.Mpangase@wits.ac.za)
@@ -140,7 +106,8 @@ Type `ls -lR *` or `tree` and hit `<ENTER>` to view the contents of your `nf-tut
 $ tree
 ```
 
-This should give you
+**Expected output:**
+```bash
 ├── data
 │   ├── 11.bim
 │   ├── 12.bim
