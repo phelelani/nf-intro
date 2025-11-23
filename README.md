@@ -10,7 +10,7 @@
 --- -->
 
 <div align="center">
-  <strong>My Tutorial Title</strong>
+  <h1>My Tutorial Title</h1>
 </div>
 
 <!-- 
