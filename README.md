@@ -1,5 +1,4 @@
-<h1 align="center" style="margin-bottom:0px; padding-bottom:0px; border-bottom:none;">Introduction to Nextflow:</h1>
-<p align="center" style="font-size:1.1em; color:gray;">Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</p>
+<h1 align="center" style="margin-bottom:0px; padding-bottom:0px; border-bottom:none;">Introduction to Nextflow:</h1><p align="center" style="font-size:1.1em; color:gray;">Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</p>
 
 <!-- <div style="text-align:center; margin-bottom:0; padding-bottom:0;">
   <h1 style="margin-bottom:0; padding-bottom:0; border-bottom:none;">
