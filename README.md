@@ -1,4 +1,4 @@
-<H1 align="center"> Introduction to Nextflow:<H1>
+<H1 align="center"> Introduction to Nextflow:</H1>
 <sub>Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</sub>
 
 ### Instructor
