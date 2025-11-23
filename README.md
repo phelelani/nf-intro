@@ -1,6 +1,6 @@
 <!-- <h1 align="center" style="margin-bottom:0px; padding-bottom:0px; border-bottom:none;">Introduction to Nextflow:</h1><p align="center" style="font-size:1.1em; color:gray;">Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</p> -->
 
-<div align="center" style="font-size:2.4em; font-weight:bold; margin-bottom:0;">
+<div align="center" style="font-size:10em; font-weight:bold; margin-bottom:0;">
   My Tutorial Title
 </div>
 
