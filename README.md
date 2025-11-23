@@ -1,4 +1,5 @@
-<h1 align="center"> Introduction to Nextflow:<br><small>Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</small></h1>
+<h1 align="center"> Introduction to Nextflow:</h1>
+<h3>Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</h3>
 
 ### Instructor
 - [Phelelani Mpangase](https://github.com/phelelani) |  [email](mailto:Phelelani.Mpangase@wits.ac.za)
