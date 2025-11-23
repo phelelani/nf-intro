@@ -137,7 +137,12 @@ $ tree
 └── data.zip
 ```
 
-**Exercise 1:** You have an input file with 6 columns (see below), where column 2 is an "index" column. Identify rows that have **identical** indexes (column 2) and remove them from the file. Your input file looks like this:
+**Exercise 1:** You have an input file with 6 columns (see below), where column 2 is an "index" column. Identify rows that have **identical** indexes (column 2) and remove them from the file. Let's have a look at this file:
+```bash
+$ less -S data/11.bim
+```
+
+**Expected output:**
 ```
 11	11:189256	0	189256	A	G
 11	11:193788	0	193788	T	C
@@ -149,11 +154,6 @@ $ tree
 11	11:211584	0	211584	T	C
 11	11:213272	0	213272	A	G
 11	11:214832	0	214832	C	T
-```
-
-Let's have a look at this file:
-```bash
-$ less -S data/11.bim
 ```
 
 **Solution - using `bash`:**
