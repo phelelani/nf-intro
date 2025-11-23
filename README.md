@@ -296,8 +296,10 @@ Nextflow supports several visualisation tools: `-with-dag`, `-with-timeline`, `-
 ```
 nextflow run cleandups.nf -with-dag <file-name>.dot
 ```
+<div align="center">
+  <img width="100%" src="assets/images/nf_flowchart.svg">
+</div>
 <p align="center">
-  <img width="250" src="assets/images/nf_flowchart.svg">
 </p>
 
 #### 1.4.2. `timeline`
