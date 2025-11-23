@@ -239,7 +239,7 @@ executor >  local (3)
 Done!
 ```
 
-**NB:** Nextflow creates a `work` directory, and inside of that are the working directories of each process -- in the example above you can see that the `getIDs` process was launched in a directory with a prefix `aa0380`, inside the directory `b3`. The directory structure is looks like:
+**NB:** Nextflow creates a `work` directory, and inside of that are the working directories of each process -- in the example above you can see that the `getIDs` process was launched in a directory with a prefix `48ce3c`, inside the directory `1b`. The directory structure is looks like:
 ```bash
 $ tree work
 ```
@@ -277,20 +277,27 @@ If execution of workflow is only partial (e.g., because of error), only need to 
 nextflow run clean_duplicates.nf -resume
 ```
 
-### 1.4. Visualising the workflow
-Nextflow supports several visualisation tools:
+**Expected output:**
 ```bash
--with-dag
--with-timeline
--with-report
+ N E X T F L O W   ~  version 25.04.2                                                                                   
+                                                                                                                        
+Launching `cleandups.nf` [grave_descartes] DSL2 - revision: 15cc3f0157                                                  
+                                                                                                                        
+[18/6d6f96] process > getIDs (1)     [100%] 1 of 1, cached: 1 ✔                                                         
+[b1/6260d6] process > getDups (1)    [100%] 1 of 1, cached: 1 ✔                                                         
+[a7/1f2cea] process > removeDups (1) [100%] 1 of 1, cached: 1 ✔                                                         
+Done!
 ```
+
+### 1.4. Visualising the workflow
+Nextflow supports several visualisation tools: `-with-dag`, `-with-timeline`, `-with-report`
 
 #### 1.4.1. `dag`
 ```
 nextflow run cleandups.nf -with-dag <file-name>.dot
 ```
 <p align="center">
-  <img width="250" src="_static/images/dag.png">
+  <img width="250" src="assets/images/nf_flowchart.svg">
 </p>
 
 #### 1.4.2. `timeline`
@@ -298,7 +305,7 @@ nextflow run cleandups.nf -with-dag <file-name>.dot
 nextflow run cleandups.nf -with-timeline <file-name>.html
 ```
 <p align="center">
-  <img width="1000" src="_static/images/timeline.png">
+  <img width="1000" src="assets/htmls/nf_timeline.html">
 </p>
 
 #### 1.4.3. `report`
