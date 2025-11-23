@@ -324,64 +324,8 @@ nextflow run cleandups.nf -with-dag  -preview <file-name>.html
     <img width="250"src="assets/images/nf_preview.png">
 </div>
 
+
 **NB:** For debugging, `-with-trace` option may be useful.
-
-<!-- ## 2. Groovy -->
-<!-- Can inter-mix Nextflow, Groovy and Java code -->
-<!-- - Very powerful, flexible -->
-<!-- - Don't need to know much (any?) Groovy but a little knowledge is a powerful thing -->
-<!-- Here we'll do some cookbook Groovy... -->
-
-<!-- ### 2.2. Groovy Closures -->
-<!-- Closures are anonymous functions -- similar to lambdas in Python. -->
-<!-- - Don't want the overhead of naming a function we only use once -->
-<!-- - Typically use with higher-order functions -- functions that take other functions as arguments. Very powerful and useful -->
-  
-<!-- Syntax for a closure that takes one argument: -->
-<!-- ```groovy -->
-<!-- { parm -> expression } -->
-<!-- ``` -->
-<!-- This is an anonymous function that takes one parameter (I've called it `parm`, you can call it whatever you want) and `expression` is a valid expression, probably including the parameter. Let's look at some examples: -->
-<!-- ```groovy -->
-<!-- { a -> a*a } (3) -->
-
-<!-- { a -> a*a+7*a - 2 } (3) -->
-
-<!-- for (n in 1..5) print( {it*it} (n)); -->
-
-<!-- { x, y ->  Math.sqrt(x*x + y*y) } (3,4) -->
-
-<!-- ``` -->
-<!-- OK, I am simplifying a bit here. Closures are a bit more than functions. -->
-
-<!-- Now what we have seen so far isn't so useful but the power comes when we have a function that take another function. Consider this very simplistic example. Suppose we have a program where we are manipulating lists of numbers. Sometimes we want to sum a list, sometimes we want to sum the squares of the numbers; sometimes we want to sum the cubes of the cosines of the numbers. The business of going through the list and summing is the same in all cases. What differs is what we do to the numbers in each case -- so rather than have a separate procedure for each type of summation, we just have one. But we pass this procedure a function that says what to do: -->
-
-<!-- ```groovy -->
-<!-- int doX(f, nums) { -->
-<!--     sum=0 -->
-
-<!--     for ( n in nums ) { -->
-<!--         sum = sum+f(n) -->
-<!--     } -->
-<!--     return sum -->
-<!-- } -->
-<!-- ``` -->
-
-<!-- We can call it thus: -->
-
-<!-- ```groovy -->
-<!-- print doX ( {a->a}, [4,5,16] ); -->
-
-<!-- print doX ( {a->a*a}, [4,5,16] ); -->
-
-<!-- print doX ( { it*it }, [4,5,16]); -->
-
-<!-- m=10 -->
-<!-- print doX({a->m*a+2}, [1,2,3]) -->
-<!-- ``` -->
-<!-- **NB:** You don't have to name the parameter -- if you don't name the parameter then the name `it` is assumed. -->
-
-<!-- **Exercise 3:** Look at the sample Groovy code [here](files/data/ex3-groovy.nf). Try to understand and execute on your machine. -->
 
 ## 2. Generalising and Extending
 We'll now extend this example, introducing more powerful features of Nextflow as well as some of the complication of workflow design.
@@ -448,53 +392,53 @@ count         min/max/sum   print/view
 nextflow.enable.dsl=2
 
 params.data = "data"
-input_ch = Channel.fromPath("${params.data}/*.bim")
+input_data = Channel.fromPath("${params.data}/*.bim")
 
 process getIDs {
     input:
-    path(input)
+    path(input_data)
     
     output:
-    path("${input.baseName}.ids"), emit: id_ch
-    path("${input}"), emit: orig_ch
+    path("${input_data.baseName}.ids"), emit: ids_channel
+    path("${input_data}"), emit: original_channel
     
     """
-    cut -f 2 ${input} | sort > ${input.baseName}.ids
+    cut -f 2 ${input_data} | sort > ${input_data.baseName}.ids
     """
 }
 
-process getDups {
+process getDuplicates {
     input:
-    path(input)
+    path(input_data)
 
     output:
-    path("${input.baseName}.dups"), emit: dups_ch
+    path("${input_data.baseName}.dups"), emit: duplicates_channel
 
     """
-    uniq -d ${input} > "${input.baseName}.dups"
+    uniq -d ${input_data} > "${input_data.baseName}.dups"
     touch ignore
     """
 }
 
-process removeDups {
-    publishDir "output", pattern: "${badids.baseName}.bim", overwrite:true, mode:'copy'
+process removeDuplicates {
+    publishDir "output", pattern: "${duplicates_channel.baseName}.bim", overwrite:true, mode:'copy'
     
     input:
-    path(badids)
-    path(orig)
+    path(duplicates_channel)
+    path(original_channel)
 
     output:
-    path("${badids.baseName}_clean.bim"), emit: cleaned_ch
+    path("${duplicates_channel.baseName}_clean.bim"), emit: cleaned_channel
 
     """
-    grep -v -f ${badids} ${orig} > ${badids.baseName}_clean.bim
+    grep -v -f ${duplicates_channel} ${original_channel} > ${duplicates_channel.baseName}_clean.bim
     """
 }
 
 workflow {
-    getIDs(input_ch)
-    getDups(getIDs.out.id_ch)
-    removeDups(getDups.out.dups_ch, getIDs.out.orig_ch)
+    getIDs(input_data)
+    getDuplicates(getIDs.out.ids_channel)
+    removeDuplicates(getDuplicates.out.duplicates_channel, getIDs.out.original_channel)
 }
 ```
 Here the `getIDs` process will execute once, for each file found in the initial glob. On a machine with multiple cores, these would probably execute in parallel, and as we'll see later if you are running on the head node of a cluster, each could run as a separate job.
@@ -503,17 +447,18 @@ Here the `getIDs` process will execute once, for each file found in the initial 
 ```bash
 nextflow run cleandups.nf
 ```
+
+**Expected output:**
 ```bash
-Launching `cleandups.nf` [distracted_hodgkin] - revision: 29fdb384a6
-[warm up] executor > local
-executor >  local (9)
-[1a/431eb7] process > getIDs     [100%] 3 of 3 ✔
-[cc/fc0aaa] process > getDups    [100%] 3 of 3 ✔
-[03/c31154] process > removeDups [100%] 3 of 3 ✔
-Completed at: 31-Jul-2019 10:26:23
-Duration    : 2s
-CPU hours   : (a few seconds)
-Succeeded   : 9
+ N E X T F L O W   ~  version 25.04.2                                                                                   
+                                                                                                                        
+Launching `clean_duplicates_v2.nf` [naughty_tesla] DSL2 - revision: 386f5bc813                                          
+                                                                                                                        
+executor >  local (12)                                                                                                  
+[07/1384ed] getIDs (4)           | 4 of 4 ✔                                                                             
+[e4/90decd] getDuplicates (4)    | 4 of 4 ✔                                                                             
+[66/b3483e] removeDuplicates (4) | 4 of 4 ✔  
+Done! 
 ```
 Now I'm going to add a next step -- say we want to split the IDs into groups using `split` but try different values of splitting.
 
