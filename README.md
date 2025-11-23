@@ -316,6 +316,14 @@ nextflow run cleandups.nf -with-report <file-name>.html
     <img width="1000"src="assets/images/nf_report.png">
 </div>
 
+#### 1.4.4. `preview` (new feature)
+```
+nextflow run cleandups.nf -with-dag  -preview <file-name>.html
+```
+<div align="center">
+    <img width="1000"src="assets/images/nf_preview.png>
+</div>
+
 **NB:** For debugging, `-with-trace` option may be useful.
 
 <!-- ## 2. Groovy -->
