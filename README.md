@@ -10,7 +10,7 @@
 --- -->
 
 <div align="center">
-  <h1>My Tutorial Title <p>test</p></h1>
+  <h1>My Tutorial Title <p style="font-size:2.4em">test</p></h1>
 </div>
 
 <!-- 
