@@ -1,13 +1,26 @@
 <!-- <h1 align="center" style="margin-bottom:0px; padding-bottom:0px; border-bottom:none;">Introduction to Nextflow:</h1><p align="center" style="font-size:1.1em; color:gray;">Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</p> -->
 
-<div align="center" style="font-size:10em; font-weight:bold; margin-bottom:0;">
+<!-- <div align="center" style="font-size:10em; font-weight:bold; margin-bottom:0;">
   My Tutorial Title
 </div>
 
 <div align="center" style="margin-top:0; font-size:1.2em; color:gray;">
   A Step-by-Step Guide for Beginners
 </div>
----
+--- -->
+
+
+<div align="center">
+  <span style="font-size:2.4em; font-weight:700;">
+    My Tutorial Title
+  </span>
+</div>
+
+<div align="center">
+  <span style="font-size:1.2em; color:gray;">
+    A Step-by-Step Guide for Beginners
+  </span>
+</div>
 
 <!-- <div style="text-align:center; margin-bottom:0; padding-bottom:0;">
   <h1 style="margin-bottom:0; padding-bottom:0; border-bottom:none;">
