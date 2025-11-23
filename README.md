@@ -1,5 +1,14 @@
-<h1 align="center"> Introduction to Nextflow:</h1>
-<p align="center" style="font-size:1.1em; color:gray;">Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</p>
+<!-- <h1 align="center" style="margin-bottom:0; padding-bottom:0; border-bottom:none;"> Introduction to Nextflow:</h1> -->
+<!-- <p align="center" style="font-size:1.1em; color:gray;">Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows</p> -->
+
+<div style="text-align:center; margin-bottom:0; padding-bottom:0;">
+  <h1 style="margin-bottom:0; padding-bottom:0; border-bottom:none;">
+    Introduction to Nextflow
+  </h1>
+  <div style="margin-top:0; padding-top:0; font-size:1.1em; color:gray;">
+    Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows
+  </div>
+</div>
 
 ### Instructor
 - [Phelelani Mpangase](https://github.com/phelelani) |  [email](mailto:Phelelani.Mpangase@wits.ac.za)
