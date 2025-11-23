@@ -1,4 +1,4 @@
-<H1 align="center"> Introduction to Nextflow:<br/>A Tutorial Through Examples </H1>
+<H1 align="center"> Introduction to Nextflow:<br/>Building Robust { Reproducible, Portable, Scalable } Bioinformatics Workflows </H1>
 
 ### Instructor
 - [Phelelani Mpangase](https://github.com/phelelani) |  [email](mailto:Phelelani.Mpangase@wits.ac.za)
