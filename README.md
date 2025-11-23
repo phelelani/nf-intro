@@ -9,9 +9,9 @@
 </div>
 --- -->
 
-<div align="center">
-  <h1>My Tutorial Title <p style="font-size:2.4em">test</p></h1>
-</div>
+<!-- <div align="center"> -->
+  <h1 style="border-bottom: none;">My Tutorial Title</h1>
+<!-- </div> -->
 
 <!-- 
 <div align="center">
