@@ -10,7 +10,7 @@
 --- -->
 
 <!-- <div align="center"> -->
-  <h1 style="border-bottom: none;">My Tutorial Title</h1>
+  <h1 align="center" style="border-bottom: none;">My Tutorial Title</h1>
 <!-- </div> -->
 
 <!-- 
