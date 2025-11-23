@@ -7,6 +7,7 @@
 <div align="center" style="margin-top:0; font-size:1.2em; color:gray;">
   A Step-by-Step Guide for Beginners
 </div>
+---
 
 <!-- <div style="text-align:center; margin-bottom:0; padding-bottom:0;">
   <h1 style="margin-bottom:0; padding-bottom:0; border-bottom:none;">
