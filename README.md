@@ -304,6 +304,8 @@ nextflow run cleandups.nf -with-dag <file-name>.dot
 ```
 nextflow run cleandups.nf -with-timeline <file-name>.html
 ```
+<iframe src="../../assets/htmls/nf_timeline.html" width="100%" height="700px" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" allowfullscreen=""></iframe>
+
 <p align="center">
   <img width="1000" src="assets/htmls/nf_timeline.html">
 </p>
