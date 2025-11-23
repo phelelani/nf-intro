@@ -169,105 +169,102 @@ This is easy to do in `bash` - very simple example, not realistic for Nextflow
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2
 
-input_ch = Channel.fromPath("data/11.bim")
+input_data = Channel.fromPath("data/12.bim")
 
 process getIDs {
     input:
-    path(input_ch)
+    path(input_data)
 
     output:
-    path("ids"), emit: id_ch
-    path("11.bim"), emit: orig_ch
+    path("ids"), emit: ids_channel
+    path("11.bim"), emit: original_channel
   
     """
-    cut -f 2 ${input_ch} | sort > ids
+    cut -f 2 ${input_data} | sort > ids
     """
 }
 
-process getDups {
+process getDuplicates {
     input:
-    path(id_ch)
+    path(ids_channel)
   
     output:
-    path("dups"), emit: dups_ch
+    path("dups"), emit: duplicates_channel
   
     """
-    uniq -d ${id_ch} > dups
+    uniq -d ${ids_channel} > dups
     touch ignore
     """
 }
 
-process removeDups {
+process removeDuplicates {
     input:
-    path(dups_ch)
-    path(orig_ch)
+    path(duplicates_channel)
+    path(original_channel)
     
     output:
-    path("clean.bim"), emit: output
+    path("clean.bim"), emit: cleaned_channel
     
     """
-    grep -v -f ${dups_ch} ${orig_ch} > clean.bim
+    grep -v -f ${duplicates_channel} ${original_channel} > clean.bim
     """
 }
 
 workflow {
-    getIDs(input_ch)
-    getDups(getIDs.out.id_ch)
-    removeDups(getDups.out.dups_ch, getIDs.out.orig_ch).subscribe { print "Done!" }
+    getIDs(input_data)
+    getDuplicates(getIDs.out.ids_channel)
+    removeDuplicates(getDuplicates.out.duplicates_channel, getIDs.out.original_channel).subscribe { print "Done!" }
 }
 ```
-Using a text editor like `emacs` or `vim`, open the Nextflow script `cleandups.nf` and have a look at it.
+
+Using a text editor like `emacs` or `vim`, open the Nextflow script `clean_duplicates.nf` and have a look at it.
 
 **NB:** The use of Nextflow variables -- within a double quoted string, there is string interpolation marked with the `$`. If you want to access a system environment variable you need to also escape with a backslash. So in the Nextflow program, you can normally just refer to Nextflow variables unadorned with their names (e.g. `$input`) and environment variables with a  dollar (e.g. `$HOME`) but within a double/triple-quoted string it's `\$input` and `\$HOME`. File names can be relative (to the current working directory where the script is being run in, not to the location of the script), or absolute. Great care needs to be taken with using absolute path names since this reduces the portability of scripts, particualarly when you are using Docker. 
 
 Now we can execute our script:
 ```
-nextflow run cleandups.nf
+nextflow run clean_duplicates.nf
 ```
-The output we get:
+
+**Expected output:**
 ```bash
-N E X T F L O W  ~  version 19.07.0
-Launching `cleandups.nf` [distraught_lamarr] - revision: fb99ce6125
-executor >  local (3)
-[b3/aa0380] process > getIDs (1)     [100%] 1 of 1 ✔
-[90/cebf36] process > getDups (1)    [100%] 1 of 1 ✔
-[9c/e0cb7d] process > removeDups (1) [100%] 1 of 1 ✔
+ N E X T F L O W   ~  version 25.04.2                                                                                   
+                                                                                                                        
+Launching `clean_duplicates.nf` [pedantic_allen] DSL2 - revision: 77b3253103                                            
+                                                                                                                        
+executor >  local (3)                                                                                                   
+[1b/48ce3c] getIDs (1)           | 1 of 1 ✔                                                                             
+[a3/d202db] getDuplicates (1)    | 1 of 1 ✔                                                                             
+[1f/311b59] removeDuplicates (1) | 1 of 1 ✔                                                                             
 Done!
 ```
+
 **NB:** Nextflow creates a `work` directory, and inside of that are the working directories of each process -- in the example above you can see that the `getIDs` process was launched in a directory with a prefix `aa0380`, inside the directory `b3`. The directory structure is looks like:
 ```bash
-nf_tut
-|--cleandups.nf
-|--data
-|  |--11.bim .. 14.bim
-|  |--2016-REG-01.dat .. 2019-XTR-12.dat
-|  |--pop
-|  |  |--BEB.[bed,bim,fam]
-|  |  |--CEU.[bed,bim,fam]
-|  |  |--JPT.[bed,bim,fam]
-|  |  |--YRI.[bed,bim,fam]
-|--solutions
-|  |--ex1-cleandups.nf
-|  |--ex2-cleandups.nf
-|  |--ex3-groovy.nf
-|  |--ex4-cleandups.nf
-|  |--ex5-weather.nf
-|  |--ex6-dockersee.nf
-|--work
-|  |--90
-|  |  |--cebf3649d883f88381e32b4912b560
-|  |  |  |--ids -> /Users/phele/nf_tut/work/b3/aa0380f2a1bca447259b7ffd390083/ids
-|  |  |  |--ignore
-|  |--9c
-|  |  |--e0cb7d8d26682d7d4a1c44392f2bb3
-|  |  |  |--11.bim -> /Users/phele/nf_tut/data/11.bim
-|  |  |  |--clean.bim
-|  |  |  |--dups -> /Users/phele/nf_tut/work/90/cebf3649d883f88381e32b4912b560/dups
-|  |--b3
-|  |  |--aa0380f2a1bca447259b7ffd390083
-|  |  |  |--11.bim -> /Users/phele/nf_tut/data/11.bim
-|  |  |  |--ids
+$ tree work
 ```
+
+**Expected output:**
+```bash
+work                                                                                                                    
+├── 1b                                                                                                                  
+│   └── 48ce3c27e0a347b06ceed8c32971eb                                                                                  
+│       ├── 11.bim -> /home/phelelani/nf-tutorial/data/11.bim                                                           
+│       └── ids                                                                                                         
+├── 1f                                                                                                                  
+│   └── 311b599371287de80732b39719b651                                                                                  
+│       ├── 11.bim -> /home/phelelani/nf-tutorial/data/11.bim                                                           
+│       ├── clean.bim                                                                                                   
+│       └── dups -> /home/phelelani/nf-tutorial/work/a3/d202db0d339647a8a203df8fec6031/dups                             
+└── a3                                                                                                                  
+    └── d202db0d339647a8a203df8fec6031                                                                                  
+        ├── dups                                                                                                        
+        ├── ids -> /home/phelelani/nf-tutorial/work/1b/48ce3c27e0a347b06ceed8c32971eb/ids                               
+        └── ignore                                                                                                      
+                                                                                                                        
+7 directories, 8 files 
+```
+
 The names of the working directory are randomly chosen so if you run it, you will get different names. Also, each time you run a process ever, it will get a unique working directory. There is  no danger of name clashes Instead of naming the file you get from a channel you can also:
 - specify `stdin` if your process expects data to come from `stdin` rather than a named file. Nextflow will pipe the file to standard input;
 - specify `stdout` if your process produces data on `stdout` and you want that data to go into the `channel`
@@ -277,7 +274,7 @@ The names of the working directory are randomly chosen so if you run it, you wil
 ### 1.3. Partial Execution
 If execution of workflow is only partial (e.g., because of error), only need to resume from process that failed:
 ```bash
-nextflow run cleandups.nf -resume
+nextflow run clean_duplicates.nf -resume
 ```
 
 ### 1.4. Visualising the workflow
