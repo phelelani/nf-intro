@@ -297,16 +297,16 @@ Nextflow supports several visualisation tools: `-with-dag`, `-with-timeline`, `-
 nextflow run cleandups.nf -with-dag <file-name>.dot
 ```
 <div align="center">
-  <img width="100%" src="assets/images/nf_flowchart.svg">
+  <img width="250" src="assets/images/nf_flowchart.svg">
 </div>
-<p align="center">
-</p>
 
 #### 1.4.2. `timeline`
 ```
 nextflow run cleandups.nf -with-timeline <file-name>.html
 ```
-<iframe src="../../assets/htmls/nf_timeline.html" width="100%" height="700px" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" allowfullscreen=""></iframe>
+<div align="center">
+    <iframe src="../../assets/htmls/nf_timeline.html"></iframe>
+</div>
 
 <p align="center">
   <img width="1000" src="assets/htmls/nf_timeline.html">
