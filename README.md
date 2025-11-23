@@ -445,7 +445,7 @@ Here the `getIDs` process will execute once, for each file found in the initial 
 
 **NB:** that in this version of `getIDs` we name the output file dependant on the input file. This is convenient to do because now we are taking many input files. There is no danger of there being any name clashes during execution because each parallel execution of `getIDs` runs in a separate local directory. However, at the end we want to be able to distinguish which output came from which input without having to do detective work -- so we name the files conveniently. Files that get created on the way but don't need at the end we can name boringly.
 ```bash
-nextflow run cleandups.nf
+nextflow run clean_duplicates_v2.nf
 ```
 
 **Expected output:**
