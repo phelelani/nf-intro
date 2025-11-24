@@ -81,7 +81,7 @@ data.zip    100%[=========================================================>]   4
 
 Then we unzip the downloaded file:
 ```bash
-unzip tutorial.zip
+unzip data.zip
 ```
 
 **Expected output:**
