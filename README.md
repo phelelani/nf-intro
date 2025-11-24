@@ -462,6 +462,41 @@ Done!
 ```
 Now I'm going to add a next step -- say we want to split the IDs into groups using `split` but try different values of splitting.
 
+
+
+## LAST EXAMPLE
+```bash
+#!/usr/bin/env nextflow
+nextflow.enable.dsl=2
+ 
+params.dir = "data/pops/"
+dir = params.dir
+params.pops = ["YRI","CEU","BEB"]
+ 
+Channel
+    .fromFilePairs("${params.dir}/{YRI,BEB,CEU}.{bed,bim,fam}",size:3) {
+        file -> file.baseName 
+    }
+    .filter { key, files -> key in params.pops }
+    .set { plink_data }
+ 
+process checkData {
+    input:
+    tuple val(pop), path(pl_files)
+    
+    output:
+    path("${pop}.frq"), emit: result
+    
+    """
+    plink --bfile $pop --freq  --out $pop
+    """
+}
+
+workflow {
+    checkData(plink_data).view()
+}
+```
+
 #### 2.3.2. Multiple parameters
 **Exercise 4:** Now try adding a process to our Nextflow example and for splitting the file but using different split values (solution [HERE](files/data/ex4-cleandups-multi-params.nf)), e.g.:
 ```bash
