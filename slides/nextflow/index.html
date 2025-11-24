@@ -34,7 +34,7 @@
 
       <section data-background-color="black">
         <h1>We are going to cover...</h1>
-        <ul style="list-style-type:none;text-align:center">
+        <ul style="list-style-type:none; text-align:center; color: black;"">
           <li class="fragment fade-up"><h2><a href="#/bioinf_big_data">Bioinformatics & Big Data</a></h2></li>
           <li class="fragment fade-up"><h2><a href="#/nextflow">Introduction to Nextflow</a></h2></li>
           <li class="fragment fade-up"><h2><a href="#/nextflow_script">Nextflow {Script, Syntax} </a></h2></li>
@@ -56,7 +56,7 @@
             <img class="r-stretch" src="../../assets/images/big_data.jpg" class="img" alt="Big Data">
         </section>
 
-        <section>
+        <!-- <section>
           <h2>Key Aspects of Big Data...</h2>
           <div class="five-cols" style="height: 200px;">
             <div class="icon-stack fragment" data-id="velocity" data-fragment-index="1">
@@ -74,11 +74,11 @@
             <div class="icon-stack fragment" data-id="veracity" data-fragment-index="5">
               <img src="../../assets/icons/veracity.gif"> Veracity
             </div>
-          </div>
+          </div> -->
 
-          <br>
+          <!-- <br> -->
 
-          <div>
+          <!-- <div>
             <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Generation/storage exceeds capacity of traditional data processing systems</p>
             <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Various forms require various (new) approaches for handling and analysing</p>
             <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Growing need for advanced analytic techniques to extract meaningful insights</p>
@@ -87,10 +87,10 @@
             <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Analyses often require multiple tools with complex installation steps .</p>
             <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Software dependencies and platform variations create major hurdles.</p>
             <p class="fragment fade-up" style="margin-bottom: -0.4em;">&#9675 Simple automation with scripts is not enough for complex, multi-dataset analyses.</p>
-            <!-- <p class="fragment fade-up" style="margin-bottom: -0.4em;"><b>Challenges:</b><br>Management | Privacy | Security</p> -->
-            <!-- <p class="fragment fade-up" style="margin-bottom: -0.4em;"><b>Opportunities:</b><br>Innovation | Decision-making | Competitive advantage</p>                -->
-          </div>
-        </section>
+            <p class="fragment fade-up" style="margin-bottom: -0.4em;"><b>Challenges:</b><br>Management | Privacy | Security</p>
+            <p class="fragment fade-up" style="margin-bottom: -0.4em;"><b>Opportunities:</b><br>Innovation | Decision-making | Competitive advantage</p>               
+          </div> -->
+
 
         <section>
           <h2>Many scientific applications require:</h2>
@@ -134,6 +134,61 @@
               <p>
                 Can't reproducible results <br> <img src="../../assets/icons/reproduce.png" class="icon" alt="icon">
               </p>
+            </div>
+          </div>
+        </section>
+        
+        <section>
+          <h2>Workflow Management System/Engine</h2>
+          <p style="margin-top: -30px;">Must support the following to promote reproducible science:</p>
+          <div class="five-cols" style="font-size: 0.5em; font-weight: bold; margin-bottom: -10px;">
+            <div data-fragment-index="1" ><img style="margin-bottom: -10px;" src="../../assets/icons/task.png"><br>Task definitions</div>
+            <div data-fragment-index="2" ><img style="margin-bottom: -10px;" src="../../assets/icons/dependency.png"><br>Dependency management</div>
+            <div data-fragment-index="3" ><img style="margin-bottom: -10px;" src="../../assets/icons/parallelisation.png"><br>Parallelisation</div>
+            <div data-fragment-index="4" ><img style="margin-bottom: -10px;" src="../../assets/icons/portable_2.png"><br>Portability</div>
+            <div data-fragment-index="5" ><img style="margin-bottom: -10px;" src="../../assets/icons/container.png"><br>Environment management</div>
+          </div>
+          <div class="five-cols" style="font-size: 0.5em; font-weight: bold; margin-bottom: -10px;">
+            <div data-fragment-index="6" ><img style="margin-bottom: -10px;" src="../../assets/icons/resources.png"><br>Resource specification & scheduling</div>
+            <div data-fragment-index="7" ><img style="margin-bottom: -10px;" src="../../assets/icons/error_2.png"><br>Error tolerance</div>
+            <div data-fragment-index="8" ><img style="margin-bottom: -10px;" src="../../assets/icons/modular.png"><br>Modularity & re-use</div>
+            <div data-fragment-index="9" ><img style="margin-bottom: -10px;" src="../../assets/icons/input.png"><br>Input/output handling & file patterns</div>
+            <div data-fragment-index="10" ><img style="margin-bottom: -10px;" src="../../assets/icons/logging.png"><br>Logging & provenance</div>
+          </div>
+          <div class="five-cols" style="font-size: 0.5em; font-weight: bold; margin-bottom: -10px;">
+            <div data-fragment-index="11" ><img style="margin-bottom: -10px;" src="../../assets/icons/ecosystem.png"><br>Tooling & ecosystem</div>
+            <div data-fragment-index="12" ><img style="margin-bottom: -10px;" src="../../assets/icons/documentation.png"><br>Ease of authoring/language ergonomics </div>
+            <div data-fragment-index="13" ><img style="margin-bottom: -10px;" src="../../assets/icons/debugging.png"><br>Debugging & observability</div>
+            <div data-fragment-index="14" ><img style="margin-bottom: -10px;" src="../../assets/icons/compliance.png"><br>Security/compliance features</div>
+            <div data-fragment-index="15" ><img style="margin-bottom: -10px;" src="../../assets/icons/api.png"><br>Standardization & interoperability</div>
+          </div>
+          <div style="height: 150px; margin-top: 30px; background-color:black;"></div>
+          <div class="stacked-paragraph" style="height: 140px; font-size: 1em; margin-top: -145px; background-color:white;">
+            <!-- <p class="fragment fade-in-then-out" data-fragment-index="1">Able to define individual computational tasks <br> (commands, inputs, outputs, resources)</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="2">Automatic construction and execution of a directed acyclic graph (DAG) based on inputs/outputs or explicit dependencies</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="3">Able to discover and run tasks in parallel <br> (dataflow, rule-based, etc.)</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="4">Able to run the same workflow on different platforms <br> (local machine, HPC, cloud [AWS/GCP/Azure], Kubernetes, etc.)</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="5">Support container (Docker/Singularity), Conda, or package managers to ensure reproducibility</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="6">Support per-task CPU, memory, time, GPU and integration with schedulers/backends</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="7">Support checkpointing, caching, and resume/retry features</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="8">Support sub-workflows/modules, imports/includes, or reusable workflow components</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="9">Support wildcards, streaming, or channel/file globbing</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="10">Support execution logs, metadata, provenance tracking, and call-level reporting</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="11">Community pipelines, registries (e.g., nf-core), GUI/portal integrations, templates</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="12">How easy it is to write, read, and maintain workflows (syntax & language)?</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="13">Dry-run, DAG visualization, per-step logs, easy debug tools</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="14">Support for secrets, data locality, controlled backends (important for clinical use)</p>
+            <p class="fragment fade-in-then-out" data-fragment-index="15">Support for standards (CWL, GA4GH, TRS, Task/Workflow APIs) or converters</p> -->
+          </div>
+          <div class="three-cols fragment" style="height: 140px; margin-top: -140px; background-color: white">
+            <div class="icon-stack" style="font-size: 0.5em;">
+              <img src="../../assets/icons/nextflow.png" style="height: 50px;">Groovy-based DSL<br>Nextflow runtime engine
+            </div>
+            <div class="icon-stack" style="font-size: 0.5em;">
+              <img src="../../assets/icons/wdl.png" style="height: 50px;">Declarative workflow language<br>Cromwell engine
+            </div>
+            <div class="icon-stack" style="font-size: 0.5em;">
+              <img src="../../assets/icons/snakemake.png" style="height: 50px;">Python-based DSL<br>Snakemake engine
             </div>
           </div>
         </section>
