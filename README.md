@@ -169,7 +169,7 @@ This is easy to do in `bash` - very simple example, not realistic for Nextflow
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2
 
-input_data = Channel.fromPath("data/12.bim")
+input_data = Channel.fromPath("data/11.bim")
 
 process getIDs {
     input:
