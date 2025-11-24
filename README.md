@@ -1013,7 +1013,7 @@ nextflow shutdown GenomeCloud
 
 <H3 align="center"> Reproducible workflows using Nextflow </H3>
 <p align="center">
-  <img width="1000" src="_static/images/best_practices.png">
+  <img width="1000" src="https://raw.githubusercontent.com/phelelani/nf-intro/refs/heads/main/assets/images/best_practices.svg">
   Flow chart summarizing the resources and best practices for development, maintenance, sharing and publishing of reproducible and portable workflows.
 </p>
 
