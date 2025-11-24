@@ -491,7 +491,7 @@ workflow {
     splitIDs(removeDups.out.cleaned_ch, splits).view()
 }
 ```
-Have a look at the modified Nextflow scrip [here](files/data/ex4-cleandups-multi-params-mod.nf).
+Have a look at the modified Nextflow script. [here](files/data/ex4-cleandups-multi-params-mod.nf).
 
 ### 2.4. Managing Grouped Files
 We've seen so far where we have a stream of file being processed independently. But in many applications there may be matched data sets. We'll now look at an example, using a popular bioinformatics tool called `PLINK`. In its most common usages, `PLINK` takes in three related files, typically with the same but different suffixed: `.bed`, `.bim`, `.fam`.
