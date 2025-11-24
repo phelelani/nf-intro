@@ -47,17 +47,17 @@ This tutorial in an introduction to Nextflow, primarily through examples. Since 
 ### 1.2. Nexflow Script
 First, lets set up a directory where we will do all our `nextflow` exercises:
 ```bash
-$ mkdir ~/nf-tutorial
+mkdir ~/nf-tutorial
 ```
 
 Then we move into the directory we just created:
 ```
-$ cd ~/nf-tutorial
+cd ~/nf-tutorial
 ```
 
 Now, lets download data we will be using:
 ```bash
-$ wget https://github.com/phelelani/nf-intro/raw/main/resources/downlads/data.zip
+wget https://github.com/phelelani/nf-intro/raw/main/resources/downlads/data.zip
 ```
 
 **Expected output:**
@@ -81,7 +81,7 @@ data.zip    100%[=========================================================>]   4
 
 Then we unzip the downloaded file:
 ```bash
-$ unzip tutorial.zip
+unzip tutorial.zip
 ```
 
 **Expected output:**
@@ -103,7 +103,7 @@ Archive:  data.zip
 
 Type `ls -lR *` or `tree` and hit `<ENTER>` to view the contents of your `nf-tutorial`. The directory will now contain a `data` folder that we will use in this tutorial.
 ```bash
-$ tree
+tree
 ```
 
 **Expected output:**
@@ -139,7 +139,7 @@ $ tree
 
 **Exercise 1:** You have an input file with 6 columns (see below), where column 2 is an "index" column. Identify rows that have **identical** indexes (column 2) and remove them from the file. Let's have a look at this file:
 ```bash
-$ less -S data/11.bim
+less -S data/11.bim
 ```
 
 **Expected output:**
@@ -158,8 +158,8 @@ $ less -S data/11.bim
 
 **Solution - using `bash`:**
 ```bash
-$ cut -f 2 data/11.bim | sort | uniq -d > dups
-$ grep -f dups data/11.bim > 11.clean
+cut -f 2 data/11.bim | sort | uniq -d > dups
+grep -f dups data/11.bim > 11.clean
 ```
 
 This is easy to do in `bash` - very simple example, not realistic for Nextflow
@@ -241,7 +241,7 @@ Done!
 
 **NB:** Nextflow creates a `work` directory, and inside of that are the working directories of each process -- in the example above you can see that the `getIDs` process was launched in a directory with a prefix `48ce3c`, inside the directory `1b`. The directory structure is looks like:
 ```bash
-$ tree work
+tree work
 ```
 
 **Expected output:**
