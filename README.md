@@ -103,7 +103,7 @@ Archive:  data.zip
 
 Type `ls -lR *` or `tree` and hit `<ENTER>` to view the contents of your `nf-tutorial`. The directory will now contain a `data` folder that we will use in this tutorial.
 ```bash
-tree
+ls -lR *
 ```
 
 **Expected output:**
