@@ -159,7 +159,7 @@ less -S data/11.bim
 **Solution - using `bash`:**
 ```bash
 cut -f 2 data/11.bim | sort | uniq -d > dups
-grep -f dups data/11.bim > 11.clean
+grep -v -f dups data/11.bim > 11.clean
 ```
 
 This is easy to do in `bash` - very simple example, not realistic for Nextflow
