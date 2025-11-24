@@ -465,6 +465,8 @@ Now I'm going to add a next step -- say we want to split the IDs into groups usi
 
 
 ## LAST EXAMPLE
+
+Create `plink.nf`
 ```bash
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2
