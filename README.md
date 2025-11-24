@@ -499,6 +499,10 @@ workflow {
 }
 ```
 
+```
+nextflow run plink.nf -with-singularity docker://phelelani/misc:plink 
+```
+
 #### 2.3.2. Multiple parameters
 **Exercise 4:** Now try adding a process to our Nextflow example and for splitting the file but using different split values (solution [HERE](files/data/ex4-cleandups-multi-params.nf)), e.g.:
 ```bash
