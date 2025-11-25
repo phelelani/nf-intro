@@ -13,8 +13,17 @@
 
 ## Learning Objectives
 
-- Find and use `nextflow` tool definitions [online](https://www.nextflow.io/docs/latest/index.html).
-- Understand how to write `nextflow` scripts and definitions for command line tools.
+- Find and use `nextflow` tool definitions [online](https://www.nextflow.io/docs/latest/index.html)
+- Understand the main concepts for "Reproducible Science":
+    - Reproducibility
+    - Portability
+    - Scalability
+- Understanc the main ingredients for "Reproducible Science":
+    - Workflow management systems
+    - Containerisation
+    - Scaling, Documentation & Sharing
+- Understand 
+- Understand how to write `nextflow` scripts and definitions for command line tools
 - Understand the concepts of `nextflow` `Channels`, `Processes` and `Channel` operators.
 - Understand how to handle multiple inputs and outputs in `nextflow`.
 - Use Docker/Singularity with `nextflow` to provide software dependencies and ensure reproducibility.
@@ -35,13 +44,13 @@
     - [Scaling, Documentat`ion & Sharing](https://phelelani.github.io/nf-intro/slides/reproducibility/#/scaling)
     - [How the Pieces Fit Together](https://phelelani.github.io/nf-intro/slides/reproducibility/#/overall)
 - [Introduction to Nextflow]()
-    -[Big Data & Bioinformatics](http://localhost:2026/slides/nextflow/#/bioinf_big_data)
-    -[Introduction to Nextflow](https://phelelani.github.io/nf-intro/slides/nextflow/#/nextflow)
-    -[Nextflow {Script, Syntax}](https://phelelani.github.io/nf-intro/slides/nextflow/#/nextflow_script)
-    -[Workflow {Caching,Resuming}](https://phelelani.github.io/nf-intro/slides/nextflow/#/partial_exec)
-    -[Workflow {Visualisation, Tracing}](https://phelelani.github.io/nf-intro/slides/nextflow/#/tracing)
-    -[{Docker, Singularity} Containers](https://phelelani.github.io/nf-intro/slides/nextflow/#/containers)
-    -[Workflow Configuration](https://phelelani.github.io/nf-intro/slides/nextflow/#/config)
+    - [Big Data & Bioinformatics](http://localhost:2026/slides/nextflow/#/bioinf_big_data)
+    - [Introduction to Nextflow](https://phelelani.github.io/nf-intro/slides/nextflow/#/nextflow)
+    - [Nextflow {Script, Syntax}](https://phelelani.github.io/nf-intro/slides/nextflow/#/nextflow_script)
+    - [Workflow {Caching,Resuming}](https://phelelani.github.io/nf-intro/slides/nextflow/#/partial_exec)
+    - [Workflow {Visualisation, Tracing}](https://phelelani.github.io/nf-intro/slides/nextflow/#/tracing)
+    - [{Docker, Singularity} Containers](https://phelelani.github.io/nf-intro/slides/nextflow/#/containers)
+    - [Workflow Configuration](https://phelelani.github.io/nf-intro/slides/nextflow/#/config)
 
 
 ## 1. Introduction
