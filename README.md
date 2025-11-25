@@ -558,7 +558,7 @@ nextflow run plink.nf -with-singularity docker://phelelani/misc:plink
 
 Now, even if you **don't** have `plink`, your script will work because my Docker/Singularity image has `plink` insalled!
 
-## Executors <img width="50" src="assets/icons/construction.gif">
+## <img width="50" src="assets/icons/construction.gif"> Executors
 <p align="center">
   <img width="100" src="assets/icons/construction.gif">
 </p>
