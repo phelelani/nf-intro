@@ -15,7 +15,7 @@
 
 - Find and use `nextflow` tool definitions [online](https://www.nextflow.io/docs/latest/index.html)
 - Understand the main concepts for "Reproducible Science", i.e., reproducibility, portability & scalability
-- Understanc the main ingredients for "Reproducible Science", i.e., workflow management systems, containerisation, scaling, documentation & sharing
+- Understand the main ingredients for "Reproducible Science", i.e., workflow management systems, containerisation, scaling, documentation & sharing
 - Understand how to write `nextflow` scripts and definitions for command line tools
 - Understand the concepts of `nextflow` `Channels`, `Processes` and `Channel` operators
 - Understand how to handle multiple inputs and outputs in `nextflow`
@@ -1061,7 +1061,7 @@ nextflow shutdown GenomeCloud
 
 <H3 align="center"> Reproducible workflows using `nextflow` </H3>
 <p align="center">
-  <img width="1000" src="_static/images/best_practices.png">
+  <img width="1000" src="assets/images/best_practices.svg">
   Flow chart summarizing the resources and best practices for development, maintenance, sharing and publishing of reproducible and portable workflows.
 </p>
 
