@@ -21,6 +21,12 @@
 - Understand `nextflow`'s configuration file (`nextflow.config`), profiles and input parameters.
 - Run `nextflow` workflows on local, HPC and cloud systems.
 
+## Learning Material
+
+- [Reproducible Science Slides](https://phelelani.github.io/nf-intro/slides/reproducibility/)
+- [Introduction to Nextflow Slides](https://phelelani.github.io/nf-intro/slides/nextflow/)
+- [Nextflow Documentation](https://www.nextflow.io/docs/latest/index.html)
+
 ## Schedule
 - [Reproducible Science](README.md#1-introduction)
     - [Big Data & Reproducible Science](https://phelelani.github.io/nf-intro/slides/reproducibility/#/big_data)
@@ -28,17 +34,15 @@
     - [Containerisation](https://phelelani.github.io/nf-intro/slides/reproducibility/#/containers)
     - [Scaling, Documentat`ion & Sharing](https://phelelani.github.io/nf-intro/slides/reproducibility/#/scaling)
     - [How the Pieces Fit Together](https://phelelani.github.io/nf-intro/slides/reproducibility/#/overall)
+- [Introduction to Nextflow]()
+    -[Big Data & Bioinformatics](http://localhost:2026/slides/nextflow/#/bioinf_big_data)
+    -[Introduction to Nextflow](https://phelelani.github.io/nf-intro/slides/nextflow/#/nextflow)
+    -[Nextflow {Script, Syntax}](https://phelelani.github.io/nf-intro/slides/nextflow/#/nextflow_script)
+    -[Workflow {Caching,Resuming}](https://phelelani.github.io/nf-intro/slides/nextflow/#/partial_exec)
+    -[Workflow {Visualisation, Tracing}](https://phelelani.github.io/nf-intro/slides/nextflow/#/tracing)
+    -[{Docker, Singularity} Containers](https://phelelani.github.io/nf-intro/slides/nextflow/#/containers)
+    -[Workflow Configuration](https://phelelani.github.io/nf-intro/slides/nextflow/#/config)
 
-<!-- - _**14:15 - 14:30**_ [Processes](README.md#3-generalising-and-extending) -->
-<!-- - _**14:15 - 14:30**_ [Channels](README.md#3-generalising-and-extending) -->
-<!-- - _**14:15 - 14:30**_ [Parameters](README.md#3-generalising-and-extending) --> 
-<!-- - _**14:15 - 14:30**_ [Configuration](README.md#3-generalising-and-extending) -->
-
-## Learning Material
-
-- [Reproducible Science Slides](https://phelelani.github.io/nf-intro/slides/reproducibility/)
-- [Introduction to Nextflow Slides](https://phelelani.github.io/nf-intro/slides/nextflow/)
-- [Nextflow Documentation](https://www.nextflow.io/docs/latest/index.html)
 
 ## 1. Introduction
 This tutorial in an introduction to `nextflow`, primarily through examples. Since the tutorial is brief, it is designed to whet your appetite -- we're only going to dip in and out of some of its features in a superficial way.
