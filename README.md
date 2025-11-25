@@ -547,7 +547,7 @@ workflow {
 }
 ```
 
-```
+```bash
 nextflow run plink.nf
 ```
 
@@ -558,7 +558,17 @@ nextflow run plink.nf -with-singularity docker://phelelani/misc:plink
 
 Now, even if you **don't** have `plink`, your script will work because my Docker/Singularity image has `plink` insalled!
 
-# 5. Best Practices
+## Executors
+<p align="center">
+  <img width="1000" src="assets/icons/construction.gif">
+</p>
+
+## Configuration
+<p align="center">
+  <img width="1000" src="assets/icons/construction.gif">
+</p>
+
+## 5. Best Practices
 <p align="center">
   <img width="1000" src="assets/images/best_practices.svg">
   Best practices for the development, maintenance & sharing of robust reproducible, portable & scalable workflows.
