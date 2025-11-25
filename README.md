@@ -30,13 +30,13 @@
 - [Nextflow Documentation](https://www.nextflow.io/docs/latest/index.html)
 
 ## Schedule
-- [Reproducible Science](README.md#1-introduction)
+- [Reproducible Science](https://phelelani.github.io/nf-intro/slides/reproducibility/)
     - [Big Data & Reproducible Science](https://phelelani.github.io/nf-intro/slides/reproducibility/#/big_data)
     - [Workflow Management Systems/Engines](https://phelelani.github.io/nf-intro/slides/reproducibility/#/engines)
     - [Containerisation](https://phelelani.github.io/nf-intro/slides/reproducibility/#/containers)
     - [Scaling, Documentat`ion & Sharing](https://phelelani.github.io/nf-intro/slides/reproducibility/#/scaling)
     - [How the Pieces Fit Together](https://phelelani.github.io/nf-intro/slides/reproducibility/#/overall)
-- [Introduction to Nextflow]()
+- [Introduction to Nextflow](https://phelelani.github.io/nf-intro/slides/nextflow/)
     - [Big Data & Bioinformatics](http://localhost:2026/slides/nextflow/#/bioinf_big_data)
     - [Introduction to Nextflow](https://phelelani.github.io/nf-intro/slides/nextflow/#/nextflow)
     - [Nextflow {Script, Syntax}](https://phelelani.github.io/nf-intro/slides/nextflow/#/nextflow_script)
@@ -46,12 +46,11 @@
     - [Workflow Configuration](https://phelelani.github.io/nf-intro/slides/nextflow/#/config)
 
 
-<h1 align="center">Introduction</h1>
+<h1 align="center">Nextflow {Script, Syntax}</h1>
 This tutorial in an introduction to `nextflow`, primarily through examples. Since the tutorial is brief, it is designed to whet your appetite -- we're only going to dip in and out of some of its features in a superficial way.
 
 **Exercises:** Throughout this tutorial there will be some practical examples. Not all will be covered in class for time reasons but you can come back and do them.
 
-### 1.2. Nexflow Script
 First, lets set up a directory where we will do all our `nextflow` exercises:
 ```bash
 mkdir ~/nf-tutorial
