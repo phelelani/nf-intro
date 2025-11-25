@@ -26,18 +26,18 @@
 ## Learning Objectives
 
 - Find and use Nextflow tool definitions [online](https://www.nextflow.io/docs/latest/index.html).
-- Understand how to write Nextflow scripts and definitions for command line tools.
+- Understand how to write `nextflow` scripts and definitions for command line tools.
 - Understand the concepts of Nextflow `Channels`, `Processes` and `Channel` operators.
 - Understand how to handle multiple inputs and outputs in Nextflow.
-- Understand Nextflow's configuration file (`nextflow.config`), profiles and input parameters.
 - Use Docker/Singularity with Nextflow to provide software dependencies and ensure reproducibility.
-- Join Nextflow tools into a workflow.
+- Understand Nextflow's configuration file (`nextflow.config`), profiles and input parameters.
 - Run Nextflow workflows on local, HPC and cloud systems.
 
 ## Learning Material
 
-- The **slides** of the lecture are available [**here**](files/slides/nextflow_tutorial.pdf).
-- The **Nextflow** documentation can be found [*here*](https://www.nextflow.io/docs/latest/index.html).
+- [Reproducible Science Slides](https://phelelani.github.io/nf-intro/slides/reproducibility/)
+- [Introduction to Nextflow Slides](https://phelelani.github.io/nf-intro/slides/nextflow/)
+- [Nextflow Documentation](https://www.nextflow.io/docs/latest/index.html)
 
 ## 1. Introduction
 This tutorial in an introduction to Nextflow, primarily through examples. Since the tutorial is brief, it is designed to whet your appetite -- we're only going to dip in and out of some of its features in a superficial way.
