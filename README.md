@@ -6,22 +6,10 @@
 
 ### General Topics
 
+- Use of workflow managent systems for automation/reproducibility
 - Introduction to `nextflow`
-  - Use of workflow systems for automation / reproducibility
-  - Basic syntax of `nextflow`
-  - Transform and execute a workflow in `nextflow`
-
-<!-- ## Schedule -->
-
-<!-- - _**14:00 - 14:15**_ [Introduction to `nextflow`](README.md#1-introduction) -->
-
-<!-- - _**14:15 - 14:30**_ [Processes](README.md#3-generalising-and-extending) -->
-
-<!-- - _**14:15 - 14:30**_ [Channels](README.md#3-generalising-and-extending) -->
-
-<!-- - _**14:15 - 14:30**_ [Parameters](README.md#3-generalising-and-extending) -->
-
-<!-- - _**14:15 - 14:30**_ [Configuration](README.md#3-generalising-and-extending) -->
+- Basic syntax of `nextflow`
+- Transform and execute a workflow in `nextflow`
 
 ## Learning Objectives
 
@@ -32,6 +20,19 @@
 - Use Docker/Singularity with `nextflow` to provide software dependencies and ensure reproducibility.
 - Understand `nextflow`'s configuration file (`nextflow.config`), profiles and input parameters.
 - Run `nextflow` workflows on local, HPC and cloud systems.
+
+## Schedule
+- [Reproducible Science](README.md#1-introduction)
+    - Big Data & Reproducible Science
+    - Workflow Management Systems/Engines
+    - Containerisation
+    - Scaling, Documentation & Sharing
+    - How the Pieces Fit Together
+
+<!-- - _**14:15 - 14:30**_ [Processes](README.md#3-generalising-and-extending) -->
+<!-- - _**14:15 - 14:30**_ [Channels](README.md#3-generalising-and-extending) -->
+<!-- - _**14:15 - 14:30**_ [Parameters](README.md#3-generalising-and-extending) --> 
+<!-- - _**14:15 - 14:30**_ [Configuration](README.md#3-generalising-and-extending) -->
 
 ## Learning Material
 
