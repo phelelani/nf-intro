@@ -144,7 +144,7 @@ ls -lR *
 └── data.zip
 ```
 
-### 1.1. **Exercise 1** 
+### **Exercise 1** 
 You have an input file with 6 columns (see below), where column 2 is an "index" column. Identify rows that have **identical** indexes (column 2) and remove them from the file. Let's have a look at this file:
 ```bash
 less -S data/11.bim
@@ -277,8 +277,6 @@ The names of the working directory are randomly chosen so if you run it, you wil
 - specify `stdin` if your process expects data to come from `stdin` rather than a named file. `nextflow` will pipe the file to standard input;
 - specify `stdout` if your process produces data on `stdout` and you want that data to go into the `channel`
 
-**Exercise 2:** Change the script so that you use `stdin` or `stdout` in the `getIDs` and `getDups` processes to avoid the use of the temporary file `ids`. You can see the solution [here](files/data/ex2-cleandups-stdin.nf)
-
 ## 2. Workflow {Caching,Resuming}
 If execution of workflow is only partial (e.g., because of error), only need to resume from process that failed:
 ```bash
@@ -395,7 +393,7 @@ count         min/max/sum   print/view
 ### Exercise 2:
 SOME EXPLAINATION HERE!
 
-**Exercise 2 Solution:**
+**Solution:**
 ```nextflow
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2
@@ -469,7 +467,6 @@ executor >  local (12)
 [66/b3483e] removeDuplicates (4) | 4 of 4 ✔  
 Done! 
 ```
-Now I'm going to add a next step -- say we want to split the IDs into groups using `split` but try different values of splitting.
 
 
 ## 4. `nextflow` + [Docker](https://www.nextflow.io/docs/latest/docker.html) & [Singularity](https://www.nextflow.io/docs/latest/singularity.html) Containers
@@ -515,13 +512,48 @@ singularity shell docker://quay.io/banshee1221/h3agwas-plink
 - Each process gets run as a separate Docker call (e.g, under the hood, a `docker run` is called)
 - Can use the same or different Docker images for each process, parameterisable
 
-Simple example (assuming all processes use the same Docker/Singularity image)
-```bash
-## For Docker
-nextflow run plink2.nf -with-docker quay.io/banshee1221/h3agwas-plink 
+### Exercise:
 
-## For Singularity
-nextflow run plink.nf -with-singularity docker://quay.io/banshee1221/h3agwas-plink
+Create `plink.nf`
+```nextflow
+#!/usr/bin/env nextflow
+nextflow.enable.dsl=2
+ 
+params.dir = "data/pops/"
+dir = params.dir
+params.pops = ["YRI","CEU","BEB"]
+ 
+Channel
+    .fromFilePairs("${params.dir}/{YRI,BEB,CEU}.{bed,bim,fam}",size:3) {
+        file -> file.baseName 
+    }
+    .filter { key, files -> key in params.pops }
+    .set { plink_data }
+ 
+process checkData {
+    input:
+    tuple val(pop), path(pl_files)
+    
+    output:
+    path("${pop}.frq"), emit: result
+    
+    """
+    plink --bfile $pop --freq  --out $pop
+    """
+}
+
+workflow {
+    checkData(plink_data).view()
+}
+```
+
+```
+nextflow run plink.nf
+```
+
+I set you up for failure there! The above will not run because `plink` is not installed in the system. Now try running with a Docer container with `plink`:
+```
+nextflow run plink.nf -with-singularity docker://phelelani/misc:plink 
 ```
 
 Now, even if you **don't** have `plink`, your script will work because my Docker/Singularity image has `plink` insalled!
