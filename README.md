@@ -1057,10 +1057,10 @@ Afterwards shut down:
 nextflow shutdown GenomeCloud
 ```
 
-## 5. Best Practices
+# 5. Best Practices
 <p align="center">
   <img width="1000" src="assets/images/best_practices.svg">
-  Best practices for the development, maintenance, sharing and publishing of reproducible and portable workflows.
+  Best practices for the development, maintenance & sharing of robust reproducible, portable & scalable workflows.
 </p>
 
 <!-- ## 6. Channel Operations -->
