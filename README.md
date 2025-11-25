@@ -392,9 +392,11 @@ split         spread        fork
 count         min/max/sum   print/view
 ```
 
-### 2.3. Generalising: Parameters & Channel Operators
-#### 2.3.1. Multiple inputs
-```nextflow
+### 4.3. Exercise:
+SOME EXPLAINATION HERE!
+
+**Solution:**
+```groovy
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2
 
