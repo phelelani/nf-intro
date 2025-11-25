@@ -23,11 +23,11 @@
 
 ## Schedule
 - [Reproducible Science](README.md#1-introduction)
-    - Big Data & Reproducible Science
-    - Workflow Management Systems/Engines
-    - Containerisation
-    - Scaling, Documentation & Sharing
-    - How the Pieces Fit Together
+    - [Big Data & Reproducible Science](https://phelelani.github.io/nf-intro/slides/reproducibility/#/big_data)
+    - [Workflow Management Systems/Engines](https://phelelani.github.io/nf-intro/slides/reproducibility/#/engines)
+    - [Containerisation](https://phelelani.github.io/nf-intro/slides/reproducibility/#/containers)
+    - [Scaling, Documentat`ion & Sharing](https://phelelani.github.io/nf-intro/slides/reproducibility/#/scaling)
+    - [How the Pieces Fit Together](https://phelelani.github.io/nf-intro/slides/reproducibility/#/overall)
 
 <!-- - _**14:15 - 14:30**_ [Processes](README.md#3-generalising-and-extending) -->
 <!-- - _**14:15 - 14:30**_ [Channels](README.md#3-generalising-and-extending) -->
