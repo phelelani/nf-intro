@@ -42,6 +42,7 @@
     - [Nextflow {Script, Syntax}](https://phelelani.github.io/nf-intro/slides/nextflow/#/nextflow_script)
     - [Workflow {Caching,Resuming}](https://phelelani.github.io/nf-intro/slides/nextflow/#/partial_exec)
     - [Workflow {Visualisation, Tracing}](https://phelelani.github.io/nf-intro/slides/nextflow/#/tracing)
+    - [Generalising {Parameters, Channels}](https://phelelani.github.io/nf-intro/slides/nextflow/#/extending)
     - [{Docker, Singularity} Containers](https://phelelani.github.io/nf-intro/slides/nextflow/#/containers)
     - [Workflow Configuration](https://phelelani.github.io/nf-intro/slides/nextflow/#/config)
 
@@ -333,7 +334,7 @@ nextflow run cleandups.nf -with-dag  -preview <file-name>.html
 
 **NB:** For debugging, `-with-trace` option may be useful.
 
-## 2. Generalising and Extending
+## 4. Generalising and Extending: Parameters & Channel Operators
 We'll now extend this example, introducing more powerful features of `nextflow` as well as some of the complication of workflow design.
 
 Extending the example:
@@ -343,35 +344,35 @@ Extending the example:
 - Complication: may need to carry the base name of the input to the final output.
 - Can repeat some steps for different parameters.
 
-### 2.1. Parameters
+### 4.1. Parameters
+
 Parameters can be specified in a `nextflow` script file:
 ```nextflow
 input_ch = Channel.fromPath(params.data)
 ```
+
 They can also be passed to the `nextflow` command when executing a script:
 ```bash
 nextflow run phylo1.nf --data data/polyseqs.fa
 ```
+
 During debugging you may want to specify default values:
 ```nextflow
 params.data = 'data'
 ```
-If you run the `nextflow` program without parameters, it will use this as a default value; if you give it parameters, the default value is replaced. Of course, as a matter of good practice, default values for parameters are really designed for real parameters of the process (like gap penalties in a multiple sequence alignment) rather than data files.
 
-`nextflow` makes a distinction between parameters with a single dash (`-`) and with a double dash (`--`). The single dash ones are from a small, language defined subset modifying the behaviour of `nextflow` -- for example we've seen `--with-dag` already.
+If you run the `nextflow` program without parameters, it will use this as a default value; if you give it parameters, the default value is replaced. Of course, as a matter of good practice, default values for parameters are really designed for real parameters of the process (like gap penalties in a multiple sequence alignment) rather than data files. `nextflow` makes a distinction between parameters with a single dash (`-`) and with a double dash (`--`). The single dash ones are from a small, language defined subset modifying the behaviour of `nextflow` -- for example we've seen `--with-dag` already. The double-dash parameters are user-defined and completely extensible -- they are used to populate `params`. They modify the behaviour of **your** program.
 
-The double-dash parameters are user-defined and completely extensible -- they are used to populate `params`. They modify the behaviour of **your** program.
-
-### 2.2. [Channels](https://www.nextflow.io/docs/latest/channel.html)
+### 4.2. [Channels](https://www.nextflow.io/docs/latest/channel.html)
 `nextflow` channels support different data types:
 - `path`
 - `stdin`
 - `env`
 - `tuple`
 
-**NB:** `val` is the most generic -- could be a file name. But sending a file provides power since you can access Groovy's file handling capacity **and**, more importantly does staging of files
+**NB:** `val` is the most generic -- could be a file name. But sending a file provides power since you can access Groovy's file handling capacity **and**, more importantly does staging of files.
 
-#### 2.2.1. Creating channels
+There are different methods for creating channels:
 ```nextflow
 Channel.create()
 Channel.empty
@@ -391,7 +392,7 @@ split         spread        fork
 count         min/max/sum   print/view
 ```
 
-### 2.3. Generalising Our Example
+### 2.3. Generalising: Parameters & Channel Operators
 #### 2.3.1. Multiple inputs
 ```nextflow
 #!/usr/bin/env nextflow
