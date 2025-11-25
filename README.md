@@ -560,12 +560,12 @@ Now, even if you **don't** have `plink`, your script will work because my Docker
 
 ## Executors
 <p align="center">
-  <img width="1000" src="assets/icons/construction.gif">
+  <img width="20" src="assets/icons/construction.gif">
 </p>
 
 ## Configuration
 <p align="center">
-  <img width="1000" src="assets/icons/construction.gif">
+  <img width="20" src="assets/icons/construction.gif">
 </p>
 
 ## 5. Best Practices
