@@ -10,10 +10,10 @@
 <h3>THIRD</h3>
 
 
-### Instructor
+## Instructor
 - [Phelelani Mpangase](https://github.com/phelelani) |  [email](mailto:Phelelani.Mpangase@wits.ac.za)
 
-### General Topics
+## General Topics
 
 - Use of workflow managent systems for automation/reproducibility
 - Introduction to `nextflow`
