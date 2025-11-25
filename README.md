@@ -29,7 +29,7 @@
 - [Introduction to Nextflow Slides](https://phelelani.github.io/nf-intro/slides/nextflow/)
 - [Nextflow Documentation](https://www.nextflow.io/docs/latest/index.html)
 
-## Schedule
+### Schedule
 - [Reproducible Science](https://phelelani.github.io/nf-intro/slides/reproducibility/)
     - [Big Data & Reproducible Science](https://phelelani.github.io/nf-intro/slides/reproducibility/#/big_data)
     - [Workflow Management Systems/Engines](https://phelelani.github.io/nf-intro/slides/reproducibility/#/engines)
