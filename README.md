@@ -29,7 +29,7 @@
 - [Introduction to Nextflow Slides](https://phelelani.github.io/nf-intro/slides/nextflow/)
 - [Nextflow Documentation](https://www.nextflow.io/docs/latest/index.html)
 
-### Schedule
+## Schedule
 - [Reproducible Science](https://phelelani.github.io/nf-intro/slides/reproducibility/)
     - [Big Data & Reproducible Science](https://phelelani.github.io/nf-intro/slides/reproducibility/#/big_data)
     - [Workflow Management Systems/Engines](https://phelelani.github.io/nf-intro/slides/reproducibility/#/engines)
@@ -277,7 +277,7 @@ The names of the working directory are randomly chosen so if you run it, you wil
 
 **Exercise 2:** Change the script so that you use `stdin` or `stdout` in the `getIDs` and `getDups` processes to avoid the use of the temporary file `ids`. You can see the solution [here](files/data/ex2-cleandups-stdin.nf)
 
-### 1.3. Partial Execution
+## 1.2. Workflow {Caching,Resuming}
 If execution of workflow is only partial (e.g., because of error), only need to resume from process that failed:
 ```bash
 nextflow run clean_duplicates.nf -resume
@@ -295,10 +295,10 @@ Launching `cleandups.nf` [grave_descartes] DSL2 - revision: 15cc3f0157
 Done!
 ```
 
-### 1.4. Visualising the workflow
+## 1.3. Workflow {Visualisation, Tracing}
 `nextflow` supports several visualisation tools: `-with-dag`, `-with-timeline`, `-with-report`
 
-#### 1.4.1. `dag`
+### 1.3.1. `dag`
 ```
 nextflow run cleandups.nf -with-dag <file-name>.dot
 ```
@@ -306,7 +306,7 @@ nextflow run cleandups.nf -with-dag <file-name>.dot
   <img width="250" src="assets/images/nf_flowchart.svg">
 </div>
 
-#### 1.4.2. `timeline`
+### 1.3.2. `timeline`
 ```
 nextflow run cleandups.nf -with-timeline <file-name>.html
 ```
@@ -314,7 +314,7 @@ nextflow run cleandups.nf -with-timeline <file-name>.html
   <img width="1000" src="assets/images/nf_timeline.png">
 </p>
 
-#### 1.4.3. `report`
+### 1.3.3. `report`
 ```
 nextflow run cleandups.nf -with-report <file-name>.html
 ```
@@ -322,14 +322,13 @@ nextflow run cleandups.nf -with-report <file-name>.html
     <img width="1000"src="assets/images/nf_report.png">
 </div>
 
-#### 1.4.4. `preview` (new feature)
+### 1.3.4. `preview` (new feature)
 ```
 nextflow run cleandups.nf -with-dag  -preview <file-name>.html
 ```
 <div align="center">
     <img width="250"src="assets/images/nf_preview.png">
 </div>
-
 
 **NB:** For debugging, `-with-trace` option may be useful.
 
