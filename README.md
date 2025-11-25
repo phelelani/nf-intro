@@ -6,14 +6,14 @@
 
 ### General Topics
 
-- Introduction to Nextflow
+- Introduction to `nextflow`
   - Use of workflow systems for automation / reproducibility
-  - Basic syntax of Nextflow
-  - Transform and execute a workflow in Nextflow
+  - Basic syntax of `nextflow`
+  - Transform and execute a workflow in `nextflow`
 
 <!-- ## Schedule -->
 
-<!-- - _**14:00 - 14:15**_ [Introduction to Nextflow](README.md#1-introduction) -->
+<!-- - _**14:00 - 14:15**_ [Introduction to `nextflow`](README.md#1-introduction) -->
 
 <!-- - _**14:15 - 14:30**_ [Processes](README.md#3-generalising-and-extending) -->
 
@@ -25,13 +25,13 @@
 
 ## Learning Objectives
 
-- Find and use Nextflow tool definitions [online](https://www.nextflow.io/docs/latest/index.html).
+- Find and use `nextflow` tool definitions [online](https://www.nextflow.io/docs/latest/index.html).
 - Understand how to write `nextflow` scripts and definitions for command line tools.
-- Understand the concepts of Nextflow `Channels`, `Processes` and `Channel` operators.
-- Understand how to handle multiple inputs and outputs in Nextflow.
-- Use Docker/Singularity with Nextflow to provide software dependencies and ensure reproducibility.
-- Understand Nextflow's configuration file (`nextflow.config`), profiles and input parameters.
-- Run Nextflow workflows on local, HPC and cloud systems.
+- Understand the concepts of `nextflow` `Channels`, `Processes` and `Channel` operators.
+- Understand how to handle multiple inputs and outputs in `nextflow`.
+- Use Docker/Singularity with `nextflow` to provide software dependencies and ensure reproducibility.
+- Understand `nextflow`'s configuration file (`nextflow.config`), profiles and input parameters.
+- Run `nextflow` workflows on local, HPC and cloud systems.
 
 ## Learning Material
 
@@ -40,7 +40,7 @@
 - [Nextflow Documentation](https://www.nextflow.io/docs/latest/index.html)
 
 ## 1. Introduction
-This tutorial in an introduction to Nextflow, primarily through examples. Since the tutorial is brief, it is designed to whet your appetite -- we're only going to dip in and out of some of its features in a superficial way.
+This tutorial in an introduction to `nextflow`, primarily through examples. Since the tutorial is brief, it is designed to whet your appetite -- we're only going to dip in and out of some of its features in a superficial way.
 
 **Exercises:** Throughout this tutorial there will be some practical examples. Not all will be covered in class for time reasons but you can come back and do them.
 
@@ -162,9 +162,9 @@ cut -f 2 data/11.bim | sort | uniq -d > dups
 grep -v -f dups data/11.bim > 11.clean
 ```
 
-This is easy to do in `bash` - very simple example, not realistic for Nextflow
+This is easy to do in `bash` - very simple example, not realistic for `nextflow`
 
-**Solution - using Nextflow:**
+**Solution - using `nextflow`:**
 ```nextflow
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2
@@ -217,9 +217,9 @@ workflow {
 }
 ```
 
-Using a text editor like `emacs` or `vim`, open the Nextflow script `clean_duplicates.nf` and have a look at it.
+Using a text editor like `emacs` or `vim`, open the `nextflow` script `clean_duplicates.nf` and have a look at it.
 
-**NB:** The use of Nextflow variables -- within a double quoted string, there is string interpolation marked with the `$`. If you want to access a system environment variable you need to also escape with a backslash. So in the Nextflow program, you can normally just refer to Nextflow variables unadorned with their names (e.g. `$input`) and environment variables with a  dollar (e.g. `$HOME`) but within a double/triple-quoted string it's `\$input` and `\$HOME`. File names can be relative (to the current working directory where the script is being run in, not to the location of the script), or absolute. Great care needs to be taken with using absolute path names since this reduces the portability of scripts, particualarly when you are using Docker. 
+**NB:** The use of `nextflow` variables -- within a double quoted string, there is string interpolation marked with the `$`. If you want to access a system environment variable you need to also escape with a backslash. So in the `nextflow` program, you can normally just refer to `nextflow` variables unadorned with their names (e.g. `$input`) and environment variables with a  dollar (e.g. `$HOME`) but within a double/triple-quoted string it's `\$input` and `\$HOME`. File names can be relative (to the current working directory where the script is being run in, not to the location of the script), or absolute. Great care needs to be taken with using absolute path names since this reduces the portability of scripts, particualarly when you are using Docker. 
 
 Now we can execute our script:
 ```
@@ -239,7 +239,7 @@ executor >  local (3)
 Done!
 ```
 
-**NB:** Nextflow creates a `work` directory, and inside of that are the working directories of each process -- in the example above you can see that the `getIDs` process was launched in a directory with a prefix `48ce3c`, inside the directory `1b`. The directory structure is looks like:
+**NB:** `nextflow` creates a `work` directory, and inside of that are the working directories of each process -- in the example above you can see that the `getIDs` process was launched in a directory with a prefix `48ce3c`, inside the directory `1b`. The directory structure is looks like:
 ```bash
 tree work
 ```
@@ -266,7 +266,7 @@ work
 ```
 
 The names of the working directory are randomly chosen so if you run it, you will get different names. Also, each time you run a process ever, it will get a unique working directory. There is  no danger of name clashes Instead of naming the file you get from a channel you can also:
-- specify `stdin` if your process expects data to come from `stdin` rather than a named file. Nextflow will pipe the file to standard input;
+- specify `stdin` if your process expects data to come from `stdin` rather than a named file. `nextflow` will pipe the file to standard input;
 - specify `stdout` if your process produces data on `stdout` and you want that data to go into the `channel`
 
 **Exercise 2:** Change the script so that you use `stdin` or `stdout` in the `getIDs` and `getDups` processes to avoid the use of the temporary file `ids`. You can see the solution [here](files/data/ex2-cleandups-stdin.nf)
@@ -290,7 +290,7 @@ Done!
 ```
 
 ### 1.4. Visualising the workflow
-Nextflow supports several visualisation tools: `-with-dag`, `-with-timeline`, `-with-report`
+`nextflow` supports several visualisation tools: `-with-dag`, `-with-timeline`, `-with-report`
 
 #### 1.4.1. `dag`
 ```
@@ -328,7 +328,7 @@ nextflow run cleandups.nf -with-dag  -preview <file-name>.html
 **NB:** For debugging, `-with-trace` option may be useful.
 
 ## 2. Generalising and Extending
-We'll now extend this example, introducing more powerful features of Nextflow as well as some of the complication of workflow design.
+We'll now extend this example, introducing more powerful features of `nextflow` as well as some of the complication of workflow design.
 
 Extending the example:
 - Parameterise the input.
@@ -338,11 +338,11 @@ Extending the example:
 - Can repeat some steps for different parameters.
 
 ### 2.1. Parameters
-Parameters can be specified in a Nextflow script file:
+Parameters can be specified in a `nextflow` script file:
 ```nextflow
 input_ch = Channel.fromPath(params.data)
 ```
-They can also be passed to the Nextflow command when executing a script:
+They can also be passed to the `nextflow` command when executing a script:
 ```bash
 nextflow run phylo1.nf --data data/polyseqs.fa
 ```
@@ -350,14 +350,14 @@ During debugging you may want to specify default values:
 ```nextflow
 params.data = 'data'
 ```
-If you run the Nextflow program without parameters, it will use this as a default value; if you give it parameters, the default value is replaced. Of course, as a matter of good practice, default values for parameters are really designed for real parameters of the process (like gap penalties in a multiple sequence alignment) rather than data files.
+If you run the `nextflow` program without parameters, it will use this as a default value; if you give it parameters, the default value is replaced. Of course, as a matter of good practice, default values for parameters are really designed for real parameters of the process (like gap penalties in a multiple sequence alignment) rather than data files.
 
-Nextflow makes a distinction between parameters with a single dash (`-`) and with a double dash (`--`). The single dash ones are from a small, language defined subset modifying the behaviour of Nextflow -- for example we've seen `--with-dag` already.
+`nextflow` makes a distinction between parameters with a single dash (`-`) and with a double dash (`--`). The single dash ones are from a small, language defined subset modifying the behaviour of `nextflow` -- for example we've seen `--with-dag` already.
 
 The double-dash parameters are user-defined and completely extensible -- they are used to populate `params`. They modify the behaviour of **your** program.
 
 ### 2.2. [Channels](https://www.nextflow.io/docs/latest/channel.html)
-Nextflow channels support different data types:
+`nextflow` channels support different data types:
 - `path`
 - `stdin`
 - `env`
@@ -504,7 +504,7 @@ nextflow run plink.nf -with-singularity docker://phelelani/misc:plink
 ```
 
 #### 2.3.2. Multiple parameters
-**Exercise 4:** Now try adding a process to our Nextflow example and for splitting the file but using different split values (solution [HERE](files/data/ex4-cleandups-multi-params.nf)), e.g.:
+**Exercise 4:** Now try adding a process to our `nextflow` example and for splitting the file but using different split values (solution [HERE](files/data/ex4-cleandups-multi-params.nf)), e.g.:
 ```bash
 split -l 400 data.txt dataX
 ```
@@ -532,7 +532,7 @@ workflow {
     splitIDs(removeDups.out.cleaned_ch, splits).view()
 }
 ```
-Have a look at the modified Nextflow scrip [here](files/data/ex4-cleandups-multi-params-mod.nf).
+Have a look at the modified `nextflow` scrip [here](files/data/ex4-cleandups-multi-params-mod.nf).
 
 ### 2.4. Managing Grouped Files
 We've seen so far where we have a stream of file being processed independently. But in many applications there may be matched data sets. We'll now look at an example, using a popular bioinformatics tool called `PLINK`. In its most common usages, `PLINK` takes in three related files, typically with the same but different suffixed: `.bed`, `.bim`, `.fam`.
@@ -743,7 +743,7 @@ workflow {
 <!-- ``` -->
 <!-- However, there is a big difference in the two uses of absolute paths. While it might be more appropriate or useful to pass the first path as a parameter, there is no real problem. Netflow will transparently stage the input files to the working directories as appropriate (generally using hard links). But the second hard-coded file will cause failures when we try to use Docker. -->
 
-## 3. Nextflow + [Docker](https://www.nextflow.io/docs/latest/docker.html) & [Singularity](https://www.nextflow.io/docs/latest/singularity.html) Containers
+## 3. `nextflow` + [Docker](https://www.nextflow.io/docs/latest/docker.html) & [Singularity](https://www.nextflow.io/docs/latest/singularity.html) Containers
 
 Light-weight virtualisation abstraction layer:
 - Currently run on `Unix` like systems (e.g., Linux, macOS).
@@ -780,7 +780,7 @@ sudo docker run -t -i quay.io/banshee1221/h3agwas-plink
 singularity shell docker://quay.io/banshee1221/h3agwas-plink
 ```
 
-Nextflow supports Docker & Singularity
+`nextflow` supports Docker & Singularity
 - Well designed script should be highly portable
 - Each process gets run as a separate Docker call (e.g, under the hood, a `docker run` is called)
 - Can use the same or different Docker images for each process, parameterisable
@@ -797,9 +797,9 @@ nextflow run plink.nf -with-singularity docker://quay.io/banshee1221/h3agwas-pli
 Now, even if you **don't** have `plink`, your script will work because my Docker/Singularity image has `plink` insalled!
 
 ### 3.1. Directory/file access
-Nextflow Docker/Singularity support highly transparent -- but pay attention to good practice:
+`nextflow` Docker/Singularity support highly transparent -- but pay attention to good practice:
 - For each process Docker/Singularity mounts the work directory for **that** process on the Docker/Singularuty image.
-- Files can be staged in and out using Nextflow mechanisms.
+- Files can be staged in and out using `nextflow` mechanisms.
 - Other files available: directories mounted through run time options or on the image
 - No other files on the host machine including the current directory
 - Process executes in the Docker/Singularity environment
@@ -895,7 +895,7 @@ Profiles can be extended in many ways:
 
 ## 4. Executors
 
-A Nextflow `executor` is the mechanism which Nexflow runs the  code in each of the processes:
+A `nextflow` `executor` is the mechanism which Nexflow runs the  code in each of the processes:
 - Default is `local`: process is run as a script
 
 There are many others:
@@ -912,13 +912,13 @@ Can be done through annotating each `process`:
 Or, `nextflow.config` file:
 - either global or per-process.
 
-### 4.2. Nextflow on a cluster (HPC)
+### 4.2. `nextflow` on a cluster (HPC)
 Script runs on the **head** node!
-- Nextflow uses the `executor` information to decide how the job should run.
+- `nextflow` uses the `executor` information to decide how the job should run.
 - Each process can be handled differently
-- Nextflow submits each process to the job scheduler on your behalf (e.g, if using `PBS/Torque`, `qsub` is done)
+- `nextflow` submits each process to the job scheduler on your behalf (e.g, if using `PBS/Torque`, `qsub` is done)
 
-What's great about this is that Nextflow handles any dependencies -- if some jobs rely on other jobs completing first, Nextflow handles this. There are also simple directives you can use to restrict the number of jobs running at a time so this can help you if there are queue restrictions. It's possible to do this without Nextflow, but it's much more transparent.
+What's great about this is that `nextflow` handles any dependencies -- if some jobs rely on other jobs completing first, `nextflow` handles this. There are also simple directives you can use to restrict the number of jobs running at a time so this can help you if there are queue restrictions. It's possible to do this without `nextflow`, but it's much more transparent.
 
 Example:
 ```nextflow
@@ -931,8 +931,8 @@ process {
 }
 ```
 
-<!-- ### 4.2. Nextflow at CHPC -->
-<!-- All the remarks in the previous section apply. You normally run Nextflow on the head node of the cluster -- Nextflow submits jobs on your behalf. -->
+<!-- ### 4.2. `nextflow` at CHPC -->
+<!-- All the remarks in the previous section apply. You normally run `nextflow` on the head node of the cluster -- `nextflow` submits jobs on your behalf. -->
 
 <!-- ```bash -->
 <!-- module load chpc/bioinf -->
@@ -944,7 +944,7 @@ process {
 <!-- screen -S runjob -->
 <!-- ``` -->
 <!-- **NB:** important setup issue as at  December 2016. -->
-<!--     The first time you run Nextflow (anywhere) it needs to download   some libraries. There are some firewall/proxy restrictions on the   head node, so the first time you run Nextflow you actually need it   to run on a worker node. Set up a job like this (putting your own  project number in -->
+<!--     The first time you run `nextflow` (anywhere) it needs to download   some libraries. There are some firewall/proxy restrictions on the   head node, so the first time you run `nextflow` you actually need it   to run on a worker node. Set up a job like this (putting your own  project number in -->
 <!-- ```bash -->
 <!-- #!/bin/bash -->
 <!-- #PBS -N test -->
@@ -958,7 +958,7 @@ process {
 <!-- nextflow -->
 <!-- ``` -->
 
-<!-- and then `qsub` it. You only have to do this once. One of the good things about Nextflow is that it is easy for you to install yourself since there are very few dependancies, so if you want to upgrade you can just do `curl -fsSL get.nextflow.io |  bash` which will produce the Nextflow binary -- just put it somewhere on your path. You'll have to use the trick above, the first time you run a new version of Nextflow. -->
+<!-- and then `qsub` it. You only have to do this once. One of the good things about `nextflow` is that it is easy for you to install yourself since there are very few dependancies, so if you want to upgrade you can just do `curl -fsSL get.nextflow.io |  bash` which will produce the `nextflow` binary -- just put it somewhere on your path. You'll have to use the trick above, the first time you run a new version of `nextflow`. -->
 
 <!-- The code below can be obtained by saying `git checkout chpc` -->
 <!-- ```nextflow -->
@@ -1017,7 +1017,7 @@ process {
 <!-- ``` -->
 
 <!-- ### 4.3. Sheduler + Docker -->
-<!-- If your cluster supports Docker you can combine the two. Nextflow has recently annnounced support of Singularity -- principles are the same. -->
+<!-- If your cluster supports Docker you can combine the two. `nextflow` has recently annnounced support of Singularity -- principles are the same. -->
 <!-- ```nextflow -->
 <!-- process.container = ''docker://quay.io/banshee1221/h3agwas-plink:latest' -->
 <!-- docker.enabled = false -->
@@ -1041,7 +1041,7 @@ nextflow cloud create GenomeCloud -c 5
 
 You need to put some information in your `nextflow.config` file, e.g., the Amazon Machine Image (AMI), your credentials, etc. In this example `GenomeCloud` is a name I have given --- I am creating a cluster with one master and four worker nodes.
 
-If successful, Nextflow will give you the name of the headnode of your cluster. 
+If successful, `nextflow` will give you the name of the headnode of your cluster. 
 - `ssh` into into it
 - run `nextflow` on it.
 
@@ -1052,14 +1052,14 @@ nextflow shutdown GenomeCloud
 
 ## 5. How it All Fits 
 
-<H3 align="center"> Reproducible workflows using Nextflow </H3>
+<H3 align="center"> Reproducible workflows using `nextflow` </H3>
 <p align="center">
   <img width="1000" src="_static/images/best_practices.png">
   Flow chart summarizing the resources and best practices for development, maintenance, sharing and publishing of reproducible and portable workflows.
 </p>
 
 <!-- ## 6. Channel Operations -->
-<!-- Nextflow tries to maximise concurrency -->
+<!-- `nextflow` tries to maximise concurrency -->
 <!-- - processes are by default synchronised by channels -->
 <!-- - when data arrives on all input channels, process executes -->
 
@@ -1285,4 +1285,4 @@ nextflow shutdown GenomeCloud
 <!-- ``` -->
 
 <!-- <\!-- ## 7. Practical Execise: Using the H3ABioNet Variant Calling Pipeline -\-> -->
-<!-- <\!-- **Exercise 7:** We will now get to play with a Nextflow bioinformatic pipeline for variant calling. The workflow is available in this [GitHub repository](https://github.com/h3abionet/h3avarcall). Instructions on how to obtain and use the workflow are detailed on the GitHub repository. -\-> -->
+<!-- <\!-- **Exercise 7:** We will now get to play with a `nextflow` bioinformatic pipeline for variant calling. The workflow is available in this [GitHub repository](https://github.com/h3abionet/h3avarcall). Instructions on how to obtain and use the workflow are detailed on the GitHub repository. -\-> -->
