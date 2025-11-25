@@ -14,21 +14,14 @@
 ## Learning Objectives
 
 - Find and use `nextflow` tool definitions [online](https://www.nextflow.io/docs/latest/index.html)
-- Understand the main concepts for "Reproducible Science":
-    - Reproducibility
-    - Portability
-    - Scalability
-- Understanc the main ingredients for "Reproducible Science":
-    - Workflow management systems
-    - Containerisation
-    - Scaling, Documentation & Sharing
-- Understand 
+- Understand the main concepts for "Reproducible Science", i.e., reproducibility, portability & scalability
+- Understanc the main ingredients for "Reproducible Science", i.e., workflow management systems, containerisation, scaling, documentation & sharing
 - Understand how to write `nextflow` scripts and definitions for command line tools
-- Understand the concepts of `nextflow` `Channels`, `Processes` and `Channel` operators.
-- Understand how to handle multiple inputs and outputs in `nextflow`.
-- Use Docker/Singularity with `nextflow` to provide software dependencies and ensure reproducibility.
-- Understand `nextflow`'s configuration file (`nextflow.config`), profiles and input parameters.
-- Run `nextflow` workflows on local, HPC and cloud systems.
+- Understand the concepts of `nextflow` `Channels`, `Processes` and `Channel` operators
+- Understand how to handle multiple inputs and outputs in `nextflow`
+- Use Docker/Singularity with `nextflow` to provide software dependencies and ensure reproducibility
+- Understand `nextflow`'s configuration file (`nextflow.config`), profiles and input parameters
+- Run `nextflow` workflows on local, HPC and cloud systems
 
 ## Learning Material
 
