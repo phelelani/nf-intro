@@ -46,7 +46,7 @@
     - [Workflow Configuration](https://phelelani.github.io/nf-intro/slides/nextflow/#/config)
 
 
-<h2 align="center">Nextflow {Script, Syntax}</h2>
+## 1. Nextflow {Script, Syntax}
 This tutorial in an introduction to `nextflow`, primarily through examples. Since the tutorial is brief, it is designed to whet your appetite -- we're only going to dip in and out of some of its features in a superficial way.
 
 **Exercises:** Throughout this tutorial there will be some practical examples. Not all will be covered in class for time reasons but you can come back and do them.
