@@ -1057,12 +1057,10 @@ Afterwards shut down:
 nextflow shutdown GenomeCloud
 ```
 
-## 5. How it All Fits 
-
-<H3 align="center"> Reproducible workflows using `nextflow` </H3>
+## 5. Best Practices
 <p align="center">
   <img width="1000" src="assets/images/best_practices.svg">
-  Flow chart summarizing the resources and best practices for development, maintenance, sharing and publishing of reproducible and portable workflows.
+  Best practices for the development, maintenance, sharing and publishing of reproducible and portable workflows.
 </p>
 
 <!-- ## 6. Channel Operations -->
