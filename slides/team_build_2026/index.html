@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Introduction to Nextflow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" type="text/css" href="../../assets/plugins/asciinema/dist/bundle/asciinema-player.css">
+  <link rel="stylesheet" href="../../assets/css/my_style.css">
+
+  <script src="../../assets/plugins/asciinema/dist/bundle/asciinema-player.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.min.js"></script>
+</head>
+
+<!--  -->
+<body>
+  <!--  -->
+  <div class="reveal">
+    <div class="slides">
+      <!-- <section data-background-color="black"> -->
+      <section class="r-stretch" data-background-image="../../assets/backgrounds/witsbits_cover.svg">
+        <h1 class="r-fit-text" style="margin-bottom:-25px"><b>Bioinformatics: Turning Coffee into Code</b></h1>
+        <h3 class="r-fit-text" style="margin-bottom:75px;"></h3>
+        <p style="margin-bottom:-25px;">by Phelelani Mpangase</p>
+        <p style="margin-bottom:75px; font-size:0.75em"><a href="mailto:someone@example.com">phelelani.mpangase@wits.ac.za</a></p>
+        <p style="font-size:0.75em; margin-bottom:1.5em">Sydney Brenner Institute for Molecular Bioscience  |  Biomedical Informatics and Translational Science
+          <br>Faculty of Health Sciences
+          <br>University of the Witwatersrand</p>
+      </section>
+
+      <section>
+        <section data-background-color="white" data-auto-animate="">
+        <!-- <section data-auto-animate="" class="r-stretch" data-background-image="../../assets/backgrounds/witsbits_slide.svg" data-background-si> -->
+          <img src="../../assets/icons/portfolio.gif" style="height: 300px; margin-bottom: -25px;">
+          <h1>2025/2026 Bioinf Portfolio</h1>
+        </section>
+        
+        <section data-background-color="white" data-auto-animate="">
+          <img src="../../assets/icons/portfolio.gif" style="height: 200px; margin-bottom: 50px;">
+          <br>
+          <!-- <h1>2025/2026 Portfolios</h1> -->
+          <ul style="list-style-type:none; text-align:center; color: white;">
+            <li class="fragment fade-up"><h2><a href="#/projects"> Projects & Consultations </a></h2></li>
+            <li class="fragment fade-up"><h2><a href="#/teaching">Teaching</a></h2></li>
+            <li class="fragment fade-up"><h2><a href="#/supervision"> Supervision & Mentorship </a></h2></li>
+            <li class="fragment fade-up"><h2><a href="#/academic"> Academic & Research Development </a></h2></li>
+            <li class="fragment fade-up"><h2><a href="#/professional"> Professional Development </a></h2></li>
+            <!-- <li class="fragment fade-up"><h2><a href="#/extending">Generalising {Channels, Parameters}</a></h2></li> -->
+            <!-- <li class="fragment fade-up"><h2><a href="#/containers">{Docker, Singularity} Containers</a></h2></li> -->
+            <!-- <li class="fragment fade-up"><h2><a href="#/config">Workflow Configuration</a></h2></li> -->
+          </ul>
+        </section>
+      </section>
+
+      <!-- SECTION -->
+      <section>
+        <section data-background-color="white" id="projects" data-auto-animate="">
+          <img src="../../assets/icons/consultation.gif" style="height: 300px; margin-bottom: -25px;">
+          <h1> Projects & Consultations </h1>
+        </section>
+
+        <section data-auto-animate="">
+          <img src="../../assets/icons/consultation.gif" style="height: 200px; margin-bottom: 50px;">
+          <br>
+          <div class="two-cols">
+            <div style="font-size: 0.75em;">
+              <ul>
+                <li data-fragment-index="1" class="fragment fade-in"><strong>Multimorbidity in Africa: Digital innovation, visualisation and application (MADIVA)</strong></li>
+                <ul data-fragment-index="1" class="fragment fade-in">
+                  <li>Wits University | Scott Hazelhurst</li>
+                </ul>
+                <li data-fragment-index="2" class="fragment fade-in"><strong>Deciphering Developmental Disorders in Africa <br> (DDD-Africa)</strong></li>
+                <ul data-fragment-index="2" class="fragment fade-in">
+                  <li>Wits University | Zane Lombard</li>
+                </ul>
+                <li data-fragment-index="3" class="fragment fade-in"><strong>COVD-19 Study</strong></li>
+                <ul data-fragment-index="3" class="fragment fade-in">
+                  <li>University of Cape Town | Jonathan Peters</li>
+                </ul>
+                <li data-fragment-index="4" class="fragment fade-in"><strong>Biological pathways from HEAT exposure (BioHeat)</strong></li>
+                <ul data-fragment-index="4" class="fragment fade-in">
+                  <li>Wits University | Matthew Chersich</li>
+                </ul>
+                <li data-fragment-index="5" class="fragment fade-in"><strong>Cancer Genetics</strong></li>
+                <ul data-fragment-index="5" class="fragment fade-in">
+                  <li>Wits University | Carl Chen & Chris Mathews</li>
+                </ul>
+                <li data-fragment-index="6" class="fragment fade-in"><strong>HIV WGS</strong></li>
+                <ul data-fragment-index="6" class="fragment fade-in">
+                  <li>Wits University | Caroline Tiemessen</li>
+                </ul>
+              </ul>
+            </div>
+            <div style="font-size: 0.75em;">
+              <ul>
+                <li data-fragment-index="7" class="fragment fade-in"><strong>Genetics of Idiopathic Dilated Cardiomayopathy (IDCM)</strong></li>
+                <ul data-fragment-index="7" class="fragment fade-in">
+                  <li>Wits University | Nqoba Thabedze</li>
+                </ul>
+                <li data-fragment-index="8" class="fragment fade-in"><strong>Base Quality Score Recalibration (BQSR) Project</strong></li>
+                <ul data-fragment-index="8" class="fragment fade-in">
+                  <li>Wits University | Scott Hazelhurst</li>
+                </ul>
+                <li data-fragment-index="9" class="fragment fade-in"><strong>Pancreatic Cancer Study</strong></li>
+                <ul data-fragment-index="9" class="fragment fade-in">
+                  <li>Wits University | Ekene Nweke </li>
+                </ul>
+                <li data-fragment-index="10" class="fragment fade-in"><strong>Galbladder Cancer Study</strong></li>
+                <ul data-fragment-index="10" class="fragment fade-in">
+                  <li>Wits University | Ekene Nweke </li>
+                </ul>
+                <li data-fragment-index="11" class="fragment fade-in"><strong>Ovarian Cancer Study</strong></li>
+                <ul data-fragment-index="11" class="fragment fade-in">
+                  <li>University | Fiona Baine-Savanhu </li>
+                </ul>
+                <li data-fragment-index="12" class="fragment fade-in"><strong>Autosomal Recessive Disorders Study</strong></li>
+                <ul data-fragment-index="12" class="fragment fade-in">
+                  <li>Wits University | Didi Tsitsi </li>
+                </ul>
+                <li data-fragment-index="13" class="fragment fade-in"><strong>MSMEG Assembly</strong></li>
+                <ul data-fragment-index="13" class="fragment fade-in">
+                  <li>Wits University | Edith Machowski</li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Best Practices for Reproducible Scientific Workflows</h2>
+          <img src="../../assets/images/best_practices.svg" class="img fragment" style="width: 90%;">
+        </section>
+      </section>
+
+      <!-- SECTION -->
+      <section>
+        <section data-background-color="white" id="teaching" data-auto-animate>
+          <img src="../../assets/icons/teaching.gif" style="height: 300px; margin-bottom: -25px;">
+          <h1> Teaching </h1>
+        </section>
+
+        <section data-auto-animate>
+          <img src="../../assets/icons/teaching.gif" style="height: 200px; margin-bottom: 20px;">
+          <!-- <h1> Teaching </h1> -->
+          <div style="font-size: 0.75em;">
+            <ul>
+              <li data-fragment-index="1" class="fragment fade-in"><strong>eLwazi Variant Calling Workshop 2025 </strong> - Online</li>
+              <ul data-fragment-index="1" class="fragment fade-in">
+                <li>11 February to 1 April (Tuesdays & Wednesdays)</li>
+              </ul>
+              <li data-fragment-index="2" class="fragment fade-in"><strong>AfriGen-D's Introduction to Bioinformatics Techniques (IBT_2025) </strong> - Online</li>
+              <ul data-fragment-index="2" class="fragment fade-in">
+                <li>29 April to 10 July (Tuesday & Thursdays)</li>
+              </ul>
+              <li data-fragment-index="3" class="fragment fade-in"><strong>eLwazi Reproducible Science Seminar Series </strong> - Online</li>
+              <ul data-fragment-index="3" class="fragment fade-in">
+                <li>28 May</li>
+              </ul>
+              <li data-fragment-index="4" class="fragment fade-in"><strong>Graduate Entry Medical Programme (GEMPII) 2025 </strong> - Wits University</li>
+              <ul data-fragment-index="4" class="fragment fade-in">
+                <li>23 June </li>
+              </ul>
+              <li data-fragment-index="5" class="fragment fade-in"><strong>GA4GH Standards Technical Integration Hackathon </strong> - Cape Town</li>
+              <ul data-fragment-index="5" class="fragment fade-in">
+                <li>27 July to 01 August </li>
+              </ul>
+              <li data-fragment-index="6" class="fragment fade-in"><strong>MSc Genomics Medicine: Next Generation Sequencing: Data, Formats & Visualisation </strong> - Wits University</li>
+              <ul data-fragment-index="6" class="fragment fade-in">
+                <li>3 November</li>
+              </ul>
+              <li data-fragment-index="7" class="fragment fade-in"><strong>MSc Genomics Medicine: Polygenic [Risk] Scores: The Basics </strong> - Wits University</li>
+              <ul data-fragment-index="7" class="fragment fade-in">
+                <li>19 May </li>
+              </ul>
+              <li data-fragment-index="8" class="fragment fade-in"><strong>eLwazi Reproducible Science </strong> - Cape Town</li>
+              <ul data-fragment-index="8" class="fragment fade-in">
+                <li>24 to 28 November 2025</li>
+              </ul>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SECTION -->
+      <section>
+        <section data-background-color="white" id="supervision" data-auto-animate>
+          <img src="../../assets/icons/student.gif" style="height: 300px; margin-bottom: -25px;">
+          <h1> Supervision & Mentorship </h1>
+        </section>
+
+        <section data-auto-animate>
+          <img src="../../assets/icons/student.gif" style="height: 200px; margin-bottom: 20px;">
+          <div style="font-size: 0.75em;">
+            <ul>
+              <li data-fragment-index="1" class="fragment fade-in"><strong>Nhlamulo Khoza</strong> (PhD Human Genetics | 2024 - Current)</strong></li>
+              <ul data-fragment-index="1" class="fragment fade-in">
+                <li>Risk Predictive Modelling of Cardiometabolic Multimorbidities in African Populations using Polygenic Scores</li>
+              </ul>
+              <li data-fragment-index="2" class="fragment fade-in"><strong>Phophi Mmbi</strong> (PhD Human Genetics | 2024 - Current)</li>
+              <ul data-fragment-index="2" class="fragment fade-in">
+                <li>Multiomic Approach for Early Detection of Oesophageal Squamous Cell Cancer in South Africa</li>
+              </ul>
+              <li data-fragment-index="3" class="fragment fade-in"><strong>Gabriella Peta Pillhofer</strong> (PhD Human Genetics | 2025 - Current)</li>
+              <ul data-fragment-index="3" class="fragment fade-in">
+                <li>Developing a long-read sequencing workflow to detect germline variants in paediatric central nervous system cancers</li>
+              </ul>
+              <li data-fragment-index="4" class="fragment fade-in"><strong>Teagan Lobb</strong> (MSc Genomic Medicine | 2025)</li>
+              <ul data-fragment-index="5" class="fragment fade-in">
+                <li>Extracting breast cancer tumour signatures from RNA-Seq data from Black South African females to gain prognostic value</li>
+              </ul>
+              <li data-fragment-index="5" class="fragment fade-in"><strong>Minenhle Mayisela</strong> (Research Fellow)</li>
+              <ul data-fragment-index="5" class="fragment fade-in">
+                <li>Genetics of Idiopathic Dilated Cardiomyopathy</li>
+              </ul>
+              <li data-fragment-index="6" class="fragment fade-in"><strong>Jane/Joe Doe</strong> (MSc Genomic Medicine | 2026)</li>
+              <ul data-fragment-index="6" class="fragment fade-in">
+                <li> Variant Filtering Automation: A quality and annotation guided tool for prioritising variants from Next Generation Sequencing (NGS) data</li>
+              </ul>
+            </ul>
+          </div>
+        </section>
+      </section>
+      
+      <!-- SECTION -->
+      <section>
+        <section data-background-color="white" id="academic" data-auto-animate>
+          <img src="../../assets/icons/laboratory.gif" style="height: 300px; margin-bottom: -25px;">
+          <h1> Academic & Research <br> Development </h1>
+        </section>
+
+        <section data-auto-animate>
+          <img src="../../assets/icons/laboratory.gif" style="height: 200px; margin-bottom: -25px;">
+          <div style="font-size: 1em;">
+            <ul>
+              <li data-fragment-index="1" class="fragment fade-in"><strong>ISCB Africa ASBCB 2025 Conference</strong> - Cape Town</li>
+              <ul data-fragment-index="1" class="fragment fade-in">
+                <li>14 April - 17 April</li>
+              </ul>
+              <li data-fragment-index="2" class="fragment fade-in"><strong>Internal/External Examination</strong></li>
+              <br>
+              <li data-fragment-index="3" class="fragment fade-in">PLAN AND STRATEGISE:</li>
+              <ul>
+                <li data-fragment-index="4" class="fragment fade-in">Own Research Questions</li>
+                <li data-fragment-index="5" class="fragment fade-in">Own Funding</li>
+                <li data-fragment-index="6" class="fragment fade-in">Publish (first/last author)</li>
+                <li data-fragment-index="7" class="fragment fade-in">Paid Training Workshop</li>
+                <li data-fragment-index="8" class="fragment fade-in">Attend Conferences</li>
+              </ul>
+              <!-- <li data-fragment-index="2" class="fragment fade-in"><strong>AfriGen-D's Introduction to Bioinformatics Techniques (IBT_2025) </strong> - Online</li>
+              <ul data-fragment-index="2" class="fragment fade-in">
+                <li>29 April to 10 July (Tuesday & Thursdays)</li>
+              </ul> -->
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SECTION -->
+      <section>
+        <section data-background-color="white" id="professional" data-auto-animate>
+          <img src="../../assets/icons/growth.gif" style="height: 300px; margin-bottom: -25px;">
+          <h1> Professional Development </h1>
+        </section>
+
+        <section data-auto-animate>
+          <img src="../../assets/icons/growth.gif" style="height: 200px; margin-bottom: -25px;">
+          <div style="font-size: 1em;">
+            <ul>
+              <li data-fragment-index="1" class="fragment fade-in"><strong>Biomedical Innovation and Entrepreneurship Training Course</strong> - Wits University</li>
+              <ul data-fragment-index="1" class="fragment fade-in">
+                <li>03 February - 07 February</li>
+              </ul>
+              <br>
+              <li data-fragment-index="2" class="fragment fade-in">PLAN AND STRATEGISE:</li>
+              <ul>
+                <li data-fragment-index="3" class="fragment fade-in">Master of Business Administration in Healthcare Leadership - 2027</li>
+              </ul>
+              <!-- <li data-fragment-index="2" class="fragment fade-in"><strong>AfriGen-D's Introduction to Bioinformatics Techniques (IBT_2025) </strong> - Online</li>
+              <ul data-fragment-index="2" class="fragment fade-in">
+                <li>29 April to 10 July (Tuesday & Thursdays)</li>
+              </ul> -->
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- SECTION -->
+      <section>
+        <section data-background-color="white" id="big_data" data-auto-animate>
+          <img src="../../assets/icons/reflect.gif" style="height: 300px; margin-bottom: -25px;">
+          <h1> Reflections </h1>
+        </section>
+
+        <section data-auto-animate>
+          <img src="../../assets/icons/reflect.gif" style="height: 200px; margin-bottom: -25px;">
+          <div style="font-size: 0.75em;">
+            <!-- <ul>
+              <li data-fragment-index="1" class="fragment fade-in"><strong>eLwazi Variant Calling Workshop 2025 </strong> - Online</li>
+              <ul data-fragment-index="1" class="fragment fade-in">
+                <li>11 February to 1 April (Tuesdays & Wednesdays)</li>
+              </ul>
+              <li data-fragment-index="2" class="fragment fade-in"><strong>AfriGen-D's Introduction to Bioinformatics Techniques (IBT_2025) </strong> - Online</li>
+              <ul data-fragment-index="2" class="fragment fade-in">
+                <li>29 April to 10 July (Tuesday & Thursdays)</li>
+              </ul>
+            </ul> -->
+          </div>
+        </section>
+      </section>
+    <!-- END -->
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/zoom/zoom.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1600,
+      height: 900,
+      margin: 0.0,
+      // minScale: 1,
+      // maxScale: 1,
+      // backgroundTransition: 'fade',
+      hash: true,
+      plugins: [ RevealZoom, RevealMarkdown, RevealHighlight ],
+    });
+  </script>
+</body>
+</html>
+

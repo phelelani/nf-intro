@@ -1,5 +1,6 @@
 li {
     margin: 0px 0;
+    /* margin-bottom: 20px; */
 }
 /* Styles for the top-level list (Level 1) */
 ul li {
@@ -96,6 +97,24 @@ pre {
     flex: 50%;
     text-align: center;
 }
+.two-cols-bullet {
+    display: flex;
+    align-items: center;   /* vertically align image + text */
+    gap: 0.5em;            /* small space between image and text */
+    padding: 0;
+}
+.two-cols-bullet .col-image {
+    flex: 0 0 20%;         /* fixed 20% column */
+    max-width: 20%;
+    text-align: center;    /* center the image if needed */
+}
+
+.two-cols-bullet .col-text {
+    flex: 0 0 80%;         /* fixed 80% column */
+    max-width: 80%;
+    text-align: left;      /* better for reading */
+}
+
 .link-ref {
     font-size: medium;
     margin-top: 0px ;
@@ -125,4 +144,9 @@ pre {
   /* display: flex; */
   /* align-items: left; */
   /* justify-content: center; */
+}
+
+
+.reveal .slides section {
+  padding: 0;
 }
